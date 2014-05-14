@@ -4,17 +4,17 @@
 /**
  * Main style
  * @author mleone
- * @version 1.5.0
+ * @version 1.5.1
  **/
 /**
  * Main LESS variables
  * @author mleone
- * @version 1.5.0
+ * @version 1.5.1
  **/
 /**
  * Common LESS mixins
  * @author mleone
- * @version 1.0.0
+ * @version 1.5.1
  **/
 body {
   background-color: #5e6a77;
@@ -490,10 +490,12 @@ a:visited {
   width: 100%;
 }
 #main-content.map #settings #menu-indicatori .scrollbox {
-  margin: 0 10px;
+  margin: 0 5px 10px 5px;
+  padding-left: 10px;
 }
 #main-content.map #settings #menu-indicatori .menu {
   border-top: 1px solid #2a3036;
+  margin-right: 0;
 }
 #main-content.map #settings #menu-indicatori .menu > li {
   border-bottom: 1px solid #2a3036;
@@ -632,7 +634,6 @@ a:visited {
   font-size: 60%;
 }
 #results td.chart-wrapper .chart {
-  margin-right: 10px;
   width: 40px;
   height: 40px;
   overflow: hidden;
@@ -1099,11 +1100,13 @@ a:visited {
   padding-left: 20px;
   line-height: 1.3em;
 }
-#sidebar .menu li > a {
+#sidebar .menu li > a,
+#sidebar .menu li > span {
   color: #2a3036;
-  padding: 5px;
+  padding: 5px 0;
   line-height: 15px;
   background: none;
+  display: block;
 }
 #sidebar .menu .tooltip {
   z-index: 9999999;
@@ -1770,9 +1773,94 @@ a:hover .sprite-close-menu {
   width: 30px;
   height: 30px;
 }
+#splash .container-fluid {
+  padding: 10px 0;
+}
+#splash #header .brand {
+  color: #fff;
+  line-height: 30px;
+  display: inline-block;
+}
+#splash #header .brand small {
+  display: block;
+  font-size: 12px;
+  line-height: 1.42857;
+  text-align: right;
+  color: #fff;
+}
+#splash #header h4 {
+  color: #fff;
+  line-height: 1.4em;
+}
+#splash #main-content {
+  padding: 0;
+}
+#splash #main-content form {
+  margin: 20px 0 0;
+}
+#splash #main-content form .row > div {
+  margin-bottom: 20px;
+}
+#splash #main-content form .form-control {
+  font-size: 18px;
+}
+#splash #main-content form .form-control:-moz-placeholder {
+  color: #99a5b1;
+  font-weight: 300;
+}
+#splash #main-content form .form-control::-moz-placeholder {
+  color: #99a5b1;
+  font-weight: 300;
+}
+#splash #main-content form .form-control:-ms-input-placeholder {
+  color: #99a5b1;
+  font-weight: 300;
+}
+#splash #main-content form .form-control::-webkit-input-placeholder {
+  color: #99a5b1;
+  font-weight: 300;
+}
+#splash #main-content form .btn-danger {
+  background-color: #b84a34;
+  border-color: #b84a34;
+  min-width: 180px;
+}
+#splash #main-content .preview {
+  position: relative;
+  width: 100%;
+  height: 391px;
+  background: url(../img/splash.jpg) no-repeat center center;
+}
+#splash #footer {
+  color: #fff;
+  padding: 10px 0;
+}
+#splash #footer li a {
+  background: url(../img/loghi.png) no-repeat 0 0;
+  display: inline-block;
+  height: 56px;
+}
+#splash #footer li a.ce {
+  width: 43px;
+  background-position: 0 0;
+}
+#splash #footer li a.rl {
+  width: 91px;
+  background-position: -89px 0;
+}
+#splash #footer li a.por {
+  width: 58px;
+  background-position: -229px 0;
+}
 @media (max-width: 992px) {
   .navbar-main .navbar-header form {
     width: 95px;
+  }
+  #splash #main-content .preview {
+    height: 250px;
+    -moz-background-size: 1600px 250px;
+    -webkit-background-size: 1600px 250px;
+    background-size: 1600px 250px;
   }
 }
 @media (max-width: 768px) {

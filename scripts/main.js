@@ -1,14 +1,19 @@
 /**
  * Main scripts
  * @author mleone
- * @version 1.5.0
+ * @version 1.5.1
  **/
 
 $(document).ready(function(){
 
     // Main vars
-    var dev       = true,
-        scroll    = true,
+    var options    = {
+            'env': 'production', // production, development
+            'autoscroll': true,
+            'collapsible': {
+                'closeothers': true
+            }
+        },
         $window   = $( window ),
         $lock     = $( '#lock' ),
         $main     = $( '#main-content'),
@@ -103,10 +108,10 @@ $(document).ready(function(){
 
     }
 
-    // Resize sidebar
-    function resizeSidebar()
+    // Scroll box
+    function setupScrollbox()
     {
-        $sidebar.find( '.scrollbox' ).enscroll({
+        $( '.scrollbox' ).enscroll({
             showOnHover: true,
             pollChanges: true,
             verticalTrackClass: 'track',
@@ -114,7 +119,9 @@ $(document).ready(function(){
         });
     }
 
-    function setupCollapsableMenu( $container ) {
+    // Collapsible menu
+    function setupCollapsableMenu( $container )
+    {
         $container.find( '.panel-collapse' ).on( 'click', function(e){
             e.preventDefault();
             var $togglers = $container.find( '.panel-collapse' ),
@@ -124,15 +131,20 @@ $(document).ready(function(){
                 selected = 0;
 
             $togglers.each(function( i, el ){
+
                 if ( !$toggler.is($( el )) ) {
-                    $( el ).addClass( 'collapse' );
-                    $( el ).next( 'ul' ).addClass( 'hidden' );
+                    if ( options.collapsible.closeothers ) {
+                        $( el ).addClass( 'collapse' );
+                        $( el ).next( 'ul' ).addClass( 'hidden' );
+                    }
                 } else {
-                    $toggler.removeClass( 'collapse' );
-                    $submenu.toggleClass( 'hidden' );
+                    $toggler.toggleClass( 'collapse' );
+                        $submenu.toggleClass( 'hidden' );
                 }
+
                 selected = $( el ).next( 'ul' ).find( 'input:checked' ).length;
-                $pin = $( el ).prev()
+                $pin = $( el ).prev();
+
                 if (selected > 0) {
                     $pin.removeClass( 'hidden' );
                 } else {
@@ -140,8 +152,6 @@ $(document).ready(function(){
                 }
             });
         });
-
-        console.log('aa');
     }
 
     // Push menu
@@ -201,29 +211,22 @@ $(document).ready(function(){
         var $panel = $( '#settings' ),
             $opener = $( '#open-settings' ),
             $closer = $( '#hide-settings' ),
-            delta = $panel.width(),
-            y = ( $hook.length > 0 ? $hook.offset().top - $hook.position().top - $hook.height() : 30 );
-
-        $panel.css( 'top', y ).show( 'fast' );
+            delta = $panel.width();
 
         $opener.on( 'click', function( e ){
-            console.log('aa');
             e.preventDefault();
-            $panel.css({ left: 4 });
+            $panel.css({ left: 4 }).show( 0 );
             $controls.css({ left: -50 });
         });
 
         $closer.on( 'click', function( e ){
-            console.log('bb');
             e.preventDefault();
             $panel.css({ left: -1 * (delta + 20) });
             $controls.css({ left: -2 });
         });
 
-        // temp...
+        // Check for map page
         if ( $( '#map-canvas' ).length ) {
-            console.log('sss');
-            offset = 200;
             $opener = $( '#open-menu-schede, #open-menu-indicatori, #open-menu-filtri' );
             $closer = null;
 
@@ -250,35 +253,42 @@ $(document).ready(function(){
 
     }
 
-    // Side controls
-    function setupSideControls()
+    // Reposition controls and settings panel
+    function moveScroll()
     {
         var y = ( $hook.length > 0 ? $hook.offset().top - $hook.position().top - $hook.height() : 30 ),
             offset = 30;
 
-        // temp...
+        // Check for map page
         if ( $( '#map-canvas' ).length ) {
             offset = 150;
         }
 
-        if ( scroll ) {
-            $window.on( 'load scroll', function() {
-                if ( $window.scrollTop() >= offset + $controls.height() - 30) {
-                    y = $window.scrollTop() - $controls.height() + 30;
-                    if ( y >= $main.height() ) {
-                        y = $main.height();
-                    }
-                } else {
-                    y = offset;
-                }
-                $controls.css( 'top', y );
-                $( '#settings' ).css( 'top', y );
+        if ( $window.scrollTop() >= offset + $controls.height() - 30) {
+            y = $window.scrollTop() - $controls.height() + 30;
+            if ( y >= $main.height() ) {
+                y = $main.height();
+            }
+        } else {
+            y = offset;
+        }
+
+        $controls.css( 'top', y );
+        $( '#settings' ).css( 'top', y );
+    }
+
+    // Side controls
+    function setupSideControls()
+    {
+        moveScroll();
+        $controls.show();
+
+        if ( options.autoscroll ) {
+            $window.on( 'scroll', function() {
+                moveScroll();
             });
         }
 
-        $window.on( 'load', function() {
-            $controls.show();
-        });
         setupPushMenu();
         setupSettingsMenu();
     }
@@ -311,6 +321,7 @@ $(document).ready(function(){
             });
     }
 
+    // Line chart
     function setLineChart(holder, cx, cy, xdata, data)
     {
         cx = cx || 200;
@@ -337,8 +348,6 @@ $(document).ready(function(){
                 smooth: false
             });
 
-        //console.log(cx, cy, data, vmax, data.indexOf(vmax), );
-
         // reset radius of all points
         l.symbols.attr({ r: 0 });
 
@@ -354,7 +363,7 @@ $(document).ready(function(){
         r.path( "M" + pmax.attr('cx') + " " + pmax.attr('cy') + "L" + pmax.attr('cx') + " " + (pmax.attr('cy') - 13) ).attr({ 'stroke-width': 3, stroke: '#cc6633' });
 
         // print the label
-        r.text( pmax.attr('cx'), (pmax.attr('cy') - 20), xdata[idx]).attr({'font-size': 12, 'font-family': "Lato", 'font-weight': 700, fill: "#cc6633"});
+        r.text( pmax.attr('cx'), (pmax.attr('cy') - 21), xdata[idx]).attr({'font-size': 10, 'font-family': "Lato", 'font-weight': 700, fill: "#cc6633"});
 
     }
 
@@ -407,25 +416,25 @@ $(document).ready(function(){
             bars[i].attr({ 'fill': colors[data] });
         }
 
-        // main set
+        // Main set
         st.push(
             faces,
             bars
         );
 
+        // Scale
         translate = 't' + (-1 * st.getBBox().x) +','+ (-1 * st.getBBox().y);
-        st.transform(translate + 's'+ scale +','+ scale +', 0, 0' );
-
+        st.transform(translate + 's'+ scale +','+ scale +', -1, -1' );
 
         // Over/active colors
         wrapper =  $( '#' + holder ).parents( 'tr' );
         if (wrapper.hasClass( 'active' )) {
             faces.attr({ 'fill': '#ffffff' });
             bars.forEach(
-                    function(el,j) {
-                        if ( el.attrs.fill === colors[0]) {
-                            bars[j].attr({ 'fill': '#ffffff' });
-                        }
+                function(el,j) {
+                    if ( el.attrs.fill === colors[0]) {
+                        bars[j].attr({ 'fill': '#ffffff' });
+                    }
                 });
         } else {
             wrapper.on( 'mouseover', function(){
@@ -482,7 +491,7 @@ $(document).ready(function(){
                     w = w || 20;
                     h = h || 20;
                     r = r || 15;
-                    setDonutChart( el.id, w, h, r, scale, [1 - val, val] );
+                    setDonutChart( el.id, w, h, r, [1 - val, val] );
                     break;
             }
 
@@ -493,7 +502,7 @@ $(document).ready(function(){
     function init()
     {
         setupTooltips();
-        resizeSidebar();
+        setupScrollbox();
         setupCollapsibleTable();
         setupSideControls();
 
@@ -505,7 +514,7 @@ $(document).ready(function(){
     init();
 
     // Dev
-    if ( dev ) {
+    if ( options.env === 'development' ) {
         $( 'body' ).append( '<script src="scripts/live.js">' );
     }
 
