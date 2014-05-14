@@ -1,7 +1,7 @@
 /**
  * Main scripts
  * @author mleone
- * @version 1.5.4
+ * @version 1.5.5
  **/
 
 $(document).ready(function(){
@@ -20,7 +20,7 @@ $(document).ready(function(){
         mapPage  = ( $( '#map-canvas' ).length ? true : false ),
 
         options    = {
-            'env': 'production', // Environment. Values: production, development
+            'env': 'development', // Environment. Values: production, development
             'autoScroll': !mapPage, // Side controls automatic scrolling. Values: true, false
             'offset': ( mapPage ? 180 : 100 ), // Top offset.
             'collapsibleMenu': {
@@ -293,9 +293,9 @@ $(document).ready(function(){
 
             if ( $window.scrollTop() >= offset + h + t ) {
                     y = $window.scrollTop() - h - t;
-                    /*if ( y >= $main.height() - $el.height() - h - t) {
-                        y = $main.height() - $el.height() - h - t;
-                    }*/
+                    if ( y >= $main.height() - $el.height() - t) {
+                        y = $main.height() - $el.height() - t;
+                    }
                 } else {
                     y = offset;
                 }
@@ -543,6 +543,25 @@ $(document).ready(function(){
         });
     }
 
+
+    function parallax()
+    {
+        $('section[data-type="background"]').each(function(){
+
+        var $scroll = $(this);
+
+            $window.scroll(function() {
+            var yPos = -($window.scrollTop() / $scroll.data('speed'));
+
+            // background position
+            var coords = '50% '+ yPos + 'px';
+
+            // move the background
+            $scroll.css({ backgroundPosition: coords });
+         });
+      });
+    }
+
     // App init
     function init()
     {
@@ -550,6 +569,7 @@ $(document).ready(function(){
         setupScrollbox();
         setupCollapsibleTable();
         setupSideControls();
+        parallax();
 
         $window.load(function(){
             addChart();
