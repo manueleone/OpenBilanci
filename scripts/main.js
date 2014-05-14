@@ -1,7 +1,7 @@
 /**
  * Main scripts
  * @author mleone
- * @version 1.5.5
+ * @version 1.5.6
  **/
 
 $(document).ready(function(){
@@ -31,6 +31,61 @@ $(document).ready(function(){
                 'scrollto': false // On click scroll page to menu position. Values: true, false
             }
         }
+
+    function homeInit()
+    {
+        var home = {
+            $sections : $( '#main-content > section' ),
+            $more : $( '#more-content a' ),
+            $navlinks : $( '#nav-links > a' ),
+            currentLink : 0,
+            $body : $( 'html, body' ),
+            animspeed : 650,
+            animeasing : 'easeInOutExpo'
+        };
+
+        home.$more.css( 'opacity', 1 );
+
+        home.$sections.waypoint( function( direction ) {
+            if( direction === 'down' ) { changeNav( $( this ) ); }
+        }, { offset: '30%' } ).waypoint( function( direction ) {
+            if( direction === 'up' ) { changeNav( $( this ) ); }
+        }, { offset: '-30%' } );
+
+        // on window resize: the body is scrolled to the position of the current section
+        $window.on( 'debouncedresize', function() {
+            scrollAnim( home.$sections.eq( home.currentLink ).offset().top );
+        });
+
+        // click on a navigation link: the body is scrolled to the position of the respective section
+        home.$navlinks.on( 'click', function() {
+            scrollAnim( home.$sections.eq( $( this ).index() ).offset().top );
+            return false;
+        });
+
+        home.$more.on( 'click', function() {
+            var n = (home.currentLink + 1 < home.$sections.length ? home.currentLink + 1 : 0);
+            scrollAnim( home.$sections.eq( n ).offset().top );
+            home.$more.css( 'opacity', '');
+            return false;
+        });
+
+        // update the current navigation link
+        function changeNav( $section ) {
+            home.$navlinks.eq( home.currentLink ).removeClass( 'current' );
+            home.currentLink = $section.index( 'section' );
+            home.$navlinks.eq( home.currentLink ).addClass( 'current' );
+        }
+
+        // function to scroll / animate the body
+        function scrollAnim( top )
+        {
+            home.$body.stop().animate( { scrollTop : top }, home.animspeed, home.animeasing );
+        }
+    }
+
+
+
 
     // Function to get the Max value in Array
     Array.max = function( array ){
@@ -570,6 +625,7 @@ $(document).ready(function(){
         setupCollapsibleTable();
         setupSideControls();
         parallax();
+        homeInit();
 
         $window.load(function(){
             addChart();

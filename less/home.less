@@ -1,7 +1,7 @@
 /**
  * Home style
  * @author mleone
- * @version 1.5.5
+ * @version 1.5.6
  **/
 
 // #home
@@ -36,6 +36,78 @@
 
     #main-content {
         padding: 0;
+        position: relative;
+
+        #nav-links {
+            position: fixed;
+            z-index: 9999;
+            right: 20px;
+            top: 50%;
+            .transform(translateY(-50%));
+
+            a {
+                display: block;
+                position: relative;
+                color: transparent;
+                height: 16px;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    border: 2px solid #fff;
+                    background: #fff;
+                    .drop-shadow();
+                }
+
+                &:hover:after {
+                    background: @activeColor;
+                }
+
+                &.current:after {
+                    background: @activeColor;
+                }
+            }
+        }
+
+        #more-content {
+            position: fixed;
+            z-index: 99999;
+            width: 100%;
+            left: 0;
+            bottom: 10px;
+
+            p {
+                margin: 0;
+
+                a {
+                    display: inline-block;
+                    padding: .2em .3em;
+                    color: @activeColor;
+                    background: #fff;
+                    opacity: .1;
+                    .border-radius(50%);
+                    .drop-shadow();
+
+                    &:hover {
+                        opacity: 1;
+
+                    }
+                }
+            }
+        }
+
+        #nav-links, #more-content {
+            display: none;
+
+            @media (min-width: 768px) {
+                & {
+                    display: block;
+                }
+            }
+        }
 
         form {
             margin: 20px 0 0;
@@ -121,8 +193,11 @@
         }
 
         #slider {
-            background: #fff;
             padding: 0;
+
+            .carousel-inner {
+                background: #fff;
+            }
 
             .carousel-control {
                 background: none;
@@ -131,21 +206,42 @@
                 .fa {
                     background: @textColor;
                     position: absolute;
+                    z-index: 3;
                     top: 50%;
-                    font-size: 28px;
+                    font-size: 20px;
                     height: auto;
-                    margin-top: -28px;
+                    margin-top: -48px;
+                    font-weight: @heavy;
                     .border-radius(50%);
                 }
 
                 .fa-angle-left {
                     left: -32px;
-                    padding: 15px 15px 15px 40px;
+                    padding: 10px 10px 10px 35px;
                 }
 
                 .fa-angle-right {
                     right: -32px;
-                    padding: 15px 40px 15px 15px;
+                    padding: 10px 35px 10px 10px;
+                }
+
+                @media (min-width: 768px) {
+                    .fa {
+                        top: 50%;
+                        font-size: 28px;
+                        height: auto;
+                        margin-top: -28px;
+                    }
+
+                    .fa-angle-left {
+                        left: -32px;
+                        padding: 15px 15px 15px 40px;
+                    }
+
+                    .fa-angle-right {
+                        right: -32px;
+                        padding: 15px 40px 15px 15px;
+                    }
                 }
 
                 &:hover {
@@ -154,7 +250,7 @@
             }
 
             .video-holder {
-                margin-top: -70px;
+                //margin-top: -70px;
 
                 .btn {
                     background: @baseColor;
@@ -162,8 +258,8 @@
                     color: @altTextColor;
                     font-size: 20px;
                     height: 60px;
-                    width: 100px;
-                    margin-bottom: 10px;
+                    width: 100%;
+                    //margin-bottom: 10px;
 
                     &:hover {
                         color: #fff;
@@ -179,14 +275,6 @@
                         width: 140px;
                         margin-bottom: 20px;
                     }
-                }
-
-                @media (min-width: 992px) {
-
-                }
-
-                @media (min-width: 1200px) {
-
                 }
             }
         }
@@ -282,56 +370,6 @@
             h2 {
                 font-size: 26px;
                 font-weight: @normal;
-            }
-        }
-
-    }
-
-    #footer {
-        color: #fff;
-        padding: 60px 0;
-
-        hr {
-            margin-top: 40px;
-            margin-bottom: 40px;
-        }
-
-        .partners {
-            margin-bottom: 20px;
-
-            li {
-                float: left;
-                margin-right: 60px;
-
-                &:last-child {
-                    margin-right: 0;
-                }
-
-                a {
-                    background: url(../img/loghi.png) no-repeat 0 0;
-                    display: inline-block;
-                    height: 60px;
-
-                    &.ce {
-                        width: 43px;
-                        background-position: 0 0;
-                    }
-
-                    &.rl {
-                        width: 91px;
-                        background-position: -89px 0;
-                    }
-
-                    &.por {
-                        width: 58px;
-                        background-position: -229px 0;
-                    }
-
-                    &.depp {
-                        width: 148px;
-                        background-position: -332px 0;
-                    }
-                }
             }
         }
     }

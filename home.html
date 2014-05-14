@@ -39,7 +39,7 @@
 
             <!-- Main panel -->
             <div id="main-content">
-                <section id="intro" data-speed="6" data-type="background">
+                <section id="intro">
                     <div class="container">
                         <form class="form" role="form">
                             <div class="row">
@@ -94,12 +94,12 @@
                         </div>
                     </div>
 
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <div id="carousel" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
                         <!--ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel" data-slide-to="1"></li>
+                            <li data-target="#carousel" data-slide-to="2"></li>
                         </ol-->
 
                         <!-- Wrapper for slides -->
@@ -119,10 +119,10 @@
                         </div>
 
                         <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <a class="left carousel-control" href="#carousel" data-slide="prev">
                             <i class="fa fa-angle-left"></i>
                         </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <a class="right carousel-control" href="#carousel" data-slide="next">
                             <i class="fa fa-angle-right"></i>
                         </a>
 
@@ -132,6 +132,7 @@
                                 <div class="col-md-12">
                                     <button class="btn btn-primary pull-right" data-toggle="modal" data-target=".video-modal">
                                         <i class="fa fa-play-circle"></i>
+                                        <span class="hidden-sm hidden-md hidden-lg">play</span>
                                     </button>
                                 </div>
                             </div>
@@ -139,7 +140,7 @@
                     </div>
                 </section>
 
-                <section id="from-the-blog"  data-speed="6" data-type="background">
+                <section id="from-the-blog">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -251,7 +252,23 @@
                     </div>
                 </section>
 
-            </div><!-- /.panel -->
+                <nav id="nav-links">
+                    <a href="#intro" class="current">Section 1</a>
+                    <a href="#slider">Section 2</a>
+                    <a href="#from-the-blog">Section 3</a>
+                    <a href="#services">Section 4</a>
+                    <a href="#open-data">Section 5</a>
+                </nav>
+
+                <div id="more-content">
+                    <p class="h1 text-center">
+                        <a href="#">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                    </p>
+                </div>
+
+            </div><!-- /#main-content -->
 
             <!-- Main footer -->
             <footer id="footer">
@@ -338,6 +355,10 @@
         <script src="scripts/vendor/g.raphael/g.raphael.js"></script>
         <script src="scripts/vendor/g.raphael/g.pie.js"></script>
         <script src="scripts/vendor/g.raphael/g.line.js"></script>
+        <!-- Home scrolling -->
+        <script src="scripts/vendor/jquery.debouncedresize/js/jquery.debouncedresize.js"></script>
+        <script src="scripts/vendor/jquery.easing/js/jquery.easing.min.js"></script>
+        <script src="scripts/vendor/jquery-waypoints/waypoints.min.js"></script>
         <!-- Custom scripts -->
         <script src="scripts/main.js"></script>
     </body>

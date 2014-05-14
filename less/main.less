@@ -1,7 +1,7 @@
 /**
  * Main style
  * @author mleone
- * @version 1.5.5
+ * @version 1.5.6
  **/
 
 // variables
@@ -1570,11 +1570,17 @@ a:visited {
 
 // footer
 #footer {
-    padding: 60px 15px;
+    color: #fff;
+    padding: 60px 0;
 
     h4, h5 {
         font-weight: @heavy;
         color: #fff;
+    }
+
+    hr {
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
 
     .nav > li > a {
@@ -1600,10 +1606,44 @@ a:visited {
     }
 
     .partners {
-        img {
-            margin: 10px 0;
+        margin-bottom: 20px;
+
+        li {
+            float: left;
+            margin-right: 60px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            a {
+                background: url(../img/loghi.png) no-repeat 0 0;
+                display: inline-block;
+                height: 60px;
+
+                &.ce {
+                    width: 43px;
+                    background-position: 0 0;
+                }
+
+                &.rl {
+                    width: 91px;
+                    background-position: -89px 0;
+                }
+
+                &.por {
+                    width: 58px;
+                    background-position: -229px 0;
+                }
+
+                &.depp {
+                    width: 148px;
+                    background-position: -332px 0;
+                }
+            }
         }
     }
+
 }
 
 // Icons
