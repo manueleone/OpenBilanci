@@ -1,7 +1,7 @@
 /**
  * Main style
  * @author mleone
- * @version 1.5.2
+ * @version 1.5.3
  **/
 
 // variables
@@ -451,7 +451,6 @@ a:visited {
     #settings {
         display: block;
         left: 40px;
-        margin-top: 10px;
 
         .panel {
             font-size: 13px;
@@ -1286,6 +1285,17 @@ a:visited {
 // sidebar
 #sidebar {
 
+    form {
+        display: block;
+        position: relative;
+        width: 100%;
+    }
+
+    #side-menu {
+        position: absolute;
+        width: 100%;
+    }
+
     .panel-default {
         background: @boxBg;
         border-color: @baseColor;
@@ -1425,7 +1435,6 @@ a:visited {
     z-index: 1;
     left: -2px;
     top: 0;
-    margin-top: 10px;
     display: none;
 
     a {
@@ -1457,7 +1466,6 @@ a:visited {
     z-index: 1;
     width: 300px;
     left: -320px;
-    display: none;
 
     .slider-arrow.close {
         opacity: 1;

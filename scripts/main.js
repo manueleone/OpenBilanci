@@ -1,20 +1,13 @@
 /**
  * Main scripts
  * @author mleone
- * @version 1.5.2
+ * @version 1.5.3
  **/
 
 $(document).ready(function(){
 
     // Main vars
-    var options    = {
-            'env': 'production', // production, development
-            'autoscroll': true,
-            'collapsible': {
-                'closeothers': true
-            }
-        },
-        $window   = $( window ),
+    var $window   = $( window ),
         $lock     = $( '#lock' ),
         $main     = $( '#main-content'),
         $sidebar  = $( '#sidebar' ),
@@ -22,7 +15,22 @@ $(document).ready(function(){
         $results  = $( '#results' ),
         $comments = $( '#comments' ),
         $controls = $( '#side-controls' ),
-        $hook     = $( 'h2.text-alt' ).first();
+        $settings = $( '#settings' ),
+        $sidemenu = $( '#side-menu' ),
+        mapPage  = ( $( '#map-canvas' ).length ? true : false ),
+
+        options    = {
+            'env': 'production', // Environment. Values: production, development
+            'autoScroll': !mapPage, // Side controls automatic scrolling. Values: true, false
+            'offset': ( mapPage ? 180 : 100 ), // Top offset.
+            'collapsibleMenu': {
+                'closeOthers': true // On click collapse other items. Values: true, false
+            },
+            'pushMenu': {
+                'scroll': false, // Push menu scrolling. Values: true, false
+                'scrollto': false // On click scroll page to menu position. Values: true, false
+            }
+        }
 
     // Function to get the Max value in Array
     Array.max = function( array ){
@@ -120,7 +128,7 @@ $(document).ready(function(){
     }
 
     // Collapsible menu
-    function setupCollapsableMenu( $container )
+    function setupCollapsibleMenu( $container )
     {
         $container.find( '.panel-collapse' ).on( 'click', function(e){
             e.preventDefault();
@@ -133,7 +141,7 @@ $(document).ready(function(){
             $togglers.each(function( i, el ){
 
                 if ( !$toggler.is($( el )) ) {
-                    if ( options.collapsible.closeothers ) {
+                    if ( options.collapsibleMenu.closeOthers ) {
                         $( el ).addClass( 'collapse' );
                         $( el ).next( 'ul' ).addClass( 'hidden' );
                     }
@@ -184,10 +192,13 @@ $(document).ready(function(){
                 .removeClass( clss.content.on )
                 .addClass( clss.content.off );
 
-            $( 'html, body' ).animate({
-                scrollTop: $sidebar.offset().top
-            }, 0);
+            $window.trigger( 'scroll' );
 
+            if ( options.pushMenu.scrollto ) {
+                $( 'html, body' ).animate({
+                    scrollTop: $sidebar.offset().top
+                }, 0);
+            }
         });
 
         $closer.on( 'click', function( e ){
@@ -202,16 +213,16 @@ $(document).ready(function(){
                 .addClass( clss.content.on );
         });
 
-        setupCollapsableMenu( $sidebar );
+        setupCollapsibleMenu( $sidebar );
     }
 
     // Settings menu
     function setupSettingsMenu()
     {
-        var $panel = $( '#settings' ),
+        var $panel  = $settings,
             $opener = $( '#open-settings' ),
             $closer = $( '#hide-settings' ),
-            delta = $panel.width();
+            delta   = $panel.width();
 
         $opener.on( 'click', function( e ){
             e.preventDefault();
@@ -226,7 +237,7 @@ $(document).ready(function(){
         });
 
         // Check for map page
-        if ( $( '#map-canvas' ).length ) {
+        if ( mapPage ) {
             $opener = $( '#open-menu-schede, #open-menu-indicatori, #open-menu-filtri' );
             $closer = null;
 
@@ -247,45 +258,62 @@ $(document).ready(function(){
                 });
             });
 
-            setupCollapsableMenu( $( '#menu-indicatori' ) );
+            setupCollapsibleMenu( $( '#menu-indicatori' ) );
         }
 
 
     }
 
     // Reposition controls and settings panel
-    function moveScroll()
+    function moveScroll( $el, offset )
     {
-        var y = ( $hook.length > 0 ? $hook.offset().top - $hook.position().top - $hook.height() : 30 ),
-            offset = 30;
+         var y = 0,
+             h = 0;
 
-        // Check for map page
-        if ( $( '#map-canvas' ).length ) {
-            offset = 150;
-        }
+         if ( $el.length ) {
 
-        if ( $window.scrollTop() >= offset + $controls.height() - 30) {
-            y = $window.scrollTop() - $controls.height() + 30;
-            if ( y >= $main.height() ) {
-                y = $main.height();
+            h = $( '#header' ).height() || 0;
+
+            if ( $window.scrollTop() >= offset + h ) {
+                y = $window.scrollTop() - h;
+                /*if ( y >= $main.height() - $el.height() - h ) {
+                    y = $main.height() - $el.height() - h;
+                }*/
+            } else {
+                y = offset;
             }
-        } else {
-            y = offset;
-        }
 
-        $controls.css( 'top', y );
-        $( '#settings' ).css( 'top', y );
+            $el.css( 'top', y );
+        }
     }
 
     // Side controls
     function setupSideControls()
     {
-        moveScroll();
         $controls.show();
 
-        if ( options.autoscroll ) {
+        moveScroll( $controls, options.offset );
+        moveScroll( $settings, options.offset );
+
+        if ( options.pushMenu.scroll ) {
+            moveScroll( $sidemenu, 0 );
+        }
+
+        $window.on( 'load', function() {
+            moveScroll( $controls, options.offset );
+            moveScroll( $settings, options.offset );
+            if ( options.pushMenu.scroll ) {
+                moveScroll( $sidemenu, 0 );
+            }
+        });
+
+        if ( options.autoScroll) {
             $window.on( 'scroll', function() {
-                moveScroll();
+                moveScroll( $controls, options.offset );
+                moveScroll( $settings, options.offset );
+                if ( options.pushMenu.scroll ) {
+                    moveScroll( $sidemenu, 0 );
+                }
             });
         }
 
@@ -515,7 +543,7 @@ $(document).ready(function(){
 
     // Dev
     if ( options.env === 'development' ) {
-        $( 'body' ).append( '<script src="scripts/live.js">' );
+        $( 'body' ).append( '<script src="scripts/live.js"></script>' );
     }
 
 
