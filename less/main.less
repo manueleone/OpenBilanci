@@ -1,7 +1,7 @@
 /**
  * Main style
  * @author mleone
- * @version 1.4.3
+ * @version 1.4.4
  **/
 
 // variables
@@ -26,12 +26,18 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 a {
-    color: @altTextColor;
+    color: @activeColor;
+    text-decoration: none;
 }
 
 a:hover, a:focus {
     color: @textColor;
     outline: none;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: @visitedColor;
 }
 
 // classes
@@ -133,6 +139,11 @@ a:hover, a:focus {
     background-color: #fff;
     color: @textColor;
     border: 1px solid @textColor;
+    text-align: left;
+
+    .link {
+        color: @activeColor;
+    }
 }
 
 // navbar-main
@@ -260,6 +271,10 @@ a:hover, a:focus {
 // main-content
 #main-content {
 
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+
     > .panel-heading {
         padding-bottom: 0;
         padding-top: 15px;
@@ -343,7 +358,7 @@ a:hover, a:focus {
     .scrollbox {
         overflow: auto;
         width: auto !important;
-        height: 160px;
+        height: 200px;
         padding: 0 5px;
     }
 
@@ -414,7 +429,6 @@ a:hover, a:focus {
 
 }
 
-
 // results
 #results {
 
@@ -445,16 +459,6 @@ a:hover, a:focus {
 
     th.alt {
         background: @activeColor;
-    }
-
-    .table-striped  {
-        a {
-            text-decoration: underline;
-        }
-
-        a:hover {
-            text-decoration: none;
-        }
     }
 
     .table-striped > tbody > tr:nth-child(2n+1) > td {
@@ -546,11 +550,21 @@ a:hover, a:focus {
     td.rate {
         .h2 {
             font-weight: @heavy;
+            margin-top: 0;
+            margin-bottom: 0;
 
             .small {
                 color: inherit;
                 font-size: 18px;
             }
+        }
+
+        p.h2 {
+            margin-bottom: 20px;
+        }
+
+        .chart {
+            margin-top: 10px;
         }
     }
 
@@ -575,27 +589,30 @@ a:hover, a:focus {
             margin: 0;
         }
 
-        a {
+        .alt a {
             color: @textColor;
         }
 
         .media {
             margin: 0;
+            font-size: 12px;
 
             .h4 {
-                font-size: 14px;
+                font-size: 13px;
                 margin: 0;
+
+                a {
+                    font-weight: @heavy;
+                }
             }
 
             figure {
-                width: 36px;
-                height: 36px;
                 border: 2px solid #fff;
                 margin-top: 0;
+            }
 
-                img {
-                    width: 36px;
-                }
+            p {
+                margin: 0;
             }
         }
     }
@@ -662,30 +679,43 @@ a:hover, a:focus {
 
     .panel-default {
 
-        h3, h4 {
+        border-color: @baseColor;
+
+        h3, h4, h5 {
             font-weight: @heavy;
         }
 
         .panel-heading {
             .media {
-                margin: 15px 0 0;
+                font-size: 13px;
 
                 .h4 {
-                    margin: 0;
+                    margin: 5px 0 0;
 
                     a {
-                        color: @textColor;
+                        color: @activeColor;
                     }
                 }
 
                 figure {
                     margin-top: 0;
                 }
+
+                .borded {
+                    border: 3px solid #ddd;
+                    width: 50px;
+                    height: 50px;
+                    margin-top: 8px;
+
+                    img {
+                        width: 50px;
+                    }
+                }
             }
         }
 
         .panel-title {
-            font-size: 20px;
+            font-size: 24px;
             line-height: 34px;
         }
 
@@ -787,15 +817,22 @@ a:hover, a:focus {
 #overview {
     .text-center > small {
         display: block;
+        color: @textColor;
+        font-weight: @light;
     }
 
     .panel {
-        border-width: 5px;
+        border-width: 7px;
         border-color: @trend;
-        min-height: 120px;
+        min-height: 130px;
 
         .panel-body {
             padding: 5px;
+
+            .h3 {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
         }
     }
 
@@ -875,7 +912,7 @@ a:hover, a:focus {
                 margin: 0;
             }
 
-            .h3 {
+            .h3, .h2 {
                 font-weight: @heavy;
 
                 .small {
@@ -977,7 +1014,18 @@ a:hover, a:focus {
 // sidebar
 #sidebar {
 
-    > .dropdown {
+    .panel-default {
+        background: @boxBg;
+        border-color: @baseColor;
+
+        .menu-title {
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-weight: @heavy;
+        }
+    }
+
+    .dropdown {
         margin-bottom: 20px;
 
         .dropdown-toggle {
@@ -996,27 +1044,33 @@ a:hover, a:focus {
         }
     }
 
-    > .menu {
+    .menu {
         border-top: 1px solid @textColor;
 
         > li {
             border-bottom: 1px solid @textColor;
+            overflow: hidden;
+            font-size: 13px;
+
+            input {
+                float: left;
+                margin-right: 10px;
+            }
 
             .icon {
                 margin-right: 6px;
+                float: left;
             }
 
             > a {
                 font-weight: normal;
             }
 
-            ul ul a {
+            ul ul li {
                 padding-left: 20px;
+                line-height: 1.3em;
             }
 
-            li {
-                margin-bottom: 6px;
-            }
         }
 
         li > a {
@@ -1047,7 +1101,9 @@ a:hover, a:focus {
 
 // filters
 #filters {
-    .panel-default {
+    .panel {
+
+        background-color: @boxBg;
 
         h3, h4 {
             font-weight: @heavy;
@@ -1055,6 +1111,12 @@ a:hover, a:focus {
 
         .panel-heading {
             line-height: 34px;
+            background-color: @boxBg;
+            border-bottom: 0;
+
+            .reset-filters {
+                margin-top: -12px;
+            }
         }
 
         .panel-title {
@@ -1079,6 +1141,85 @@ a:hover, a:focus {
             text-align: left;
             padding-top: 15px;
             padding-bottom: 15px;
+        }
+    }
+}
+
+#side-controls {
+    position: absolute;
+    z-index: 1;
+    left: -2px;
+    top: -50px;
+    margin-top: 10px;
+
+    .slider-arrow.show {
+        padding: 4px;
+        border: 1px solid @baseColor;
+        background: @boxBg;
+        .border-radius (3px);
+    }
+}
+
+// #settings
+#settings {
+    position: absolute;
+    z-index: 1;
+    width: 300px;
+    left: -320px;
+    display: none;
+
+    .slider-arrow.close {
+        opacity: 1;
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .slider-arrow.show {
+        position: absolute;
+        right: -50px;
+        top: 3px;
+        padding: 8px 2px;
+        border: 1px solid @baseColor;
+        background: @boxBg;
+        .border-radius (3px);
+    }
+
+    .panel {
+        margin: 0;
+        background: @boxBg;
+        border-color: @baseColor;
+        position: relative;
+
+        h3, h4 {
+            font-weight: @heavy;
+        }
+
+        .panel-heading {
+            background: @boxBg;
+            line-height: 34px;
+        }
+
+        .panel-title {
+            font-size: 20px;
+            line-height: 34px;
+        }
+
+        .enabled {
+            p.h4 {
+                margin-bottom: 0;
+            }
+        }
+
+        .list-group-item {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            font-size: 14px;
+            background-color: @boxBg;
+        }
+
+        .list-group-item.label {
+            background-color: @baseColor;
+            text-align: left;
         }
     }
 }
@@ -1130,6 +1271,8 @@ a:hover, a:focus {
 
 .sprite-world { background-position: 0 -792px; width: 30px; height: 29px; }
 
+.sprite-updown { background-position: 0 -871px; width: 45px; height: 23px; }
+
 .sprite-search { background-position: -95px -1160px; width: 16px; height: 16px; }
 .sprite-search-alt { background-position: -190px -848px; width: 16px; height: 16px; }
 
@@ -1153,8 +1296,10 @@ a:hover, a:focus {
 .sprite-toggle-menu { background-position: 0 -1229px; width: 24px; height: 13px; }
 .sprite-toggle-menu:hover { background-position: 0 -1166px; width: 24px; height: 13px; }
 
-.active .sprite-toggle-menu { background-position: 0 -1355px; width: 24px; height: 13px;}
-.active .sprite-toggle-menu:hover { background-position: 0 -1292px; width: 24px; height: 13px; }
+.sprite-filters { background-position: 0 -1099px; width: 23px; height: 10px; }
+
+.active .sprite-toggle-menu { background-position: 1px -944px; width: 24px; height: 24px; }
+.active .sprite-toggle-menu:hover { background-position: 0 -1018px; width: 23px; height: 24px; }
 
 .sprite-trend-up-3-small { background-position: 0 -1784px; width: 24px; height: 24px; }
 a:hover .sprite-trend-up-3-small { background-position: 0 -1710px; width: 24px; height: 24px; }
@@ -1245,6 +1390,11 @@ a:hover .sprite-plus { background-position: 0 -1418px; width: 24px; height: 23px
 .sprite-minus { background-position: 0 -1637px; width: 24px; height: 23px; }
 a:hover .sprite-minus { background-position: 0 -1564px; width: 24px; height: 23px; }
 
+.sprite-open-menu { background-position: -286px -516px; width: 20px; height: 16px; }
+a:hover .sprite-open-menu { background-position: -286px -590px; width: 20px; height: 16px; }
+.sprite-close-menu { background-position: -286px -664px; width: 20px; height: 16px;}
+a:hover .sprite-close-menu { background-position: -286px -738px; width: 20px; height: 16px; }
+
 
 // Media queries
 @media (max-width: 992px) {
@@ -1254,5 +1404,13 @@ a:hover .sprite-minus { background-position: 0 -1564px; width: 24px; height: 23p
 }
 
 @media (max-width: 768px) {
+    .navbar-subnav .nav > li {
+        border-right: 0;
+    }
+}
 
+@media (max-width: 320px) {
+    .navbar-main .navbar-brand {
+        padding: 10px 0;
+    }
 }
