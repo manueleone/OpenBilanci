@@ -1,7 +1,7 @@
 /**
  * Main scripts
  * @author mleone
- * @version 1.5.3
+ * @version 1.5.4
  **/
 
 $(document).ready(function(){
@@ -27,7 +27,7 @@ $(document).ready(function(){
                 'closeOthers': true // On click collapse other items. Values: true, false
             },
             'pushMenu': {
-                'scroll': false, // Push menu scrolling. Values: true, false
+                'scroll': true, // Push menu scrolling. Values: true, false
                 'scrollto': false // On click scroll page to menu position. Values: true, false
             }
         }
@@ -213,6 +213,22 @@ $(document).ready(function(){
                 .addClass( clss.content.on );
         });
 
+
+        $sidebar.find( 'ul.dropdown-menu li a' ).on( 'click', function( e ){
+            e.preventDefault();
+
+            var $this = $( this ),
+                $dropdown = $this.parents( '.dropdown' ),
+                $btn = $dropdown.find( 'button' );
+
+            $btn.html( '<span class="caret pull-right" />' + $this.text() );
+            $dropdown.removeClass('open');
+
+            $sidebar.find( 'ul.menu' ).addClass( 'hidden' );
+            $sidebar.find( $this.attr( 'href' ) ).removeClass( 'hidden' );
+
+        });
+
         setupCollapsibleMenu( $sidebar );
     }
 
@@ -261,27 +277,28 @@ $(document).ready(function(){
             setupCollapsibleMenu( $( '#menu-indicatori' ) );
         }
 
-
     }
 
     // Reposition controls and settings panel
     function moveScroll( $el, offset )
     {
          var y = 0,
-             h = 0;
+             h = 0,
+             t = 0;
 
          if ( $el.length ) {
 
             h = $( '#header' ).height() || 0;
+            t = $el.closest( $sidebar ).length ? $sidebar.position().top : 0;
 
-            if ( $window.scrollTop() >= offset + h ) {
-                y = $window.scrollTop() - h;
-                /*if ( y >= $main.height() - $el.height() - h ) {
-                    y = $main.height() - $el.height() - h;
-                }*/
-            } else {
-                y = offset;
-            }
+            if ( $window.scrollTop() >= offset + h + t ) {
+                    y = $window.scrollTop() - h - t;
+                    /*if ( y >= $main.height() - $el.height() - h - t) {
+                        y = $main.height() - $el.height() - h - t;
+                    }*/
+                } else {
+                    y = offset;
+                }
 
             $el.css( 'top', y );
         }

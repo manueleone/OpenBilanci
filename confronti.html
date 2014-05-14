@@ -103,9 +103,10 @@
                             <div id="comments" class="row"></div> <!-- /comments -->
 
                         </div><!-- /#content -->
+
                         <aside id="sidebar" class="hidden">
                             <form>
-                                <div class="panel panel-default">
+                                <div class="panel panel-default" id="side-menu">
                                     <div class="panel-body">
 
                                         <a role="button" href="#" class="active pull-right" id="hide-menu"><span class="icon sprite-toggle-menu"></span></a>
@@ -116,17 +117,17 @@
                                         <div class="dropdown">
                                             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                                                 <span class="caret pull-right"></span>
-                                                INDICATORI
+                                                Indicatori
                                             </button>
                                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#menu-indicatori">Indicatori</a></li>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#menu-entrate">Entrate</a></li>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#menu-spese">Spese</a></li>
                                             </ul>
                                         </div>
 
                                         <div class="scrollbox">
-                                            <ul class="nav nav-stacked menu">
+                                            <ul class="nav nav-stacked menu" id="menu-indicatori">
                                                 <li>
                                                     <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
                                                     <a href="#" class="panel-collapse collapse"><span class="icon sprite-autonomia-finanziaria"></span> AUTONOMIA FINANZIARIA</a>
@@ -156,7 +157,6 @@
                                                             <a href="#">Consistenza...</a>
                                                         </li>
                                                     </ul>
-
                                                 </li>
                                                 <li>
                                                     <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
@@ -206,6 +206,63 @@
                                                     <a href="#" class="panel-collapse"><span class="icon sprite-indicatori"></span> INDICATORI DI CONTESTO</a>
                                                 </li>
                                             </ul>
+
+                                            <ul class="nav nav-stacked menu hidden" id="menu-entrate">
+                                                <li>
+                                                    <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                    <a href="#" class="panel-collapse"><span class="icon sprite-peso-amministrazione"></span> PESO DELL’AMMINISTRAZIONE</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                    <a href="#" class="panel-collapse"><span class="icon sprite-propensione-sviluppo"></span> PROPENSIONE ALLO SVILUPPO</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                    <a href="#" class="panel-collapse"><span class="icon sprite-sostenibilita"></span> SOSTENIBILITA</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                    <a href="#" class="panel-collapse"><span class="icon sprite-indicatori"></span> INDICATORI DI CONTESTO</a>
+                                                </li>
+                                            </ul>
+
+                                            <ul class="nav nav-stacked menu hidden" id="menu-spese">
+                                                <li>
+                                                    <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                    <a href="#" class="panel-collapse collapse"><span class="icon sprite-autonomia-finanziaria"></span> AUTONOMIA FINANZIARIA</a>
+
+                                                    <ul class="nav nav-stacked hidden">
+                                                        <li>
+                                                            <a href="#" class="pin pull-right" data-toggle="tooltip" data-html="true" title="vai alla classifica di tutti i comuni per questo indicatore.<br><strong class='link'><span class='icon sprite-search-alt'></span> Lorem ipsum</strong>"><span class="icon sprite-info"></span></a>
+                                                            <a href="#">Velocità di riscossione delle entrate proprie</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                            <a href="#">Pressione tributaria per abitante</a>
+
+                                                            <ul class="nav nav-stacked">
+                                                                <li>
+                                                                    <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                                    <a href="">Pressione tributaria per...</a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                            <a href="#">Risultato d’amministrazione valutato al fair value</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                            <a href="#">Consistenza...</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                    <a href="#" class="panel-collapse"><span class="icon sprite-indicatori"></span> INDICATORI DI CONTESTO</a>
+                                                </li>
+                                            </ul>
+
                                         </div>
 
                                     </div>
