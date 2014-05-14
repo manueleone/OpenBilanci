@@ -1,7 +1,7 @@
 /**
  * Main scripts
  * @author mleone
- * @version 1.5.6
+ * @version 1.5.7
  **/
 
 $(document).ready(function(){
@@ -30,7 +30,7 @@ $(document).ready(function(){
                 'scroll': true, // Push menu scrolling. Values: true, false
                 'scrollto': false // On click scroll page to menu position. Values: true, false
             }
-        }
+        };
 
     function homeInit()
     {
@@ -63,6 +63,7 @@ $(document).ready(function(){
             return false;
         });
 
+        // click on the arrow link
         home.$more.on( 'click', function() {
             var n = (home.currentLink + 1 < home.$sections.length ? home.currentLink + 1 : 0);
             scrollAnim( home.$sections.eq( n ).offset().top );
@@ -625,7 +626,10 @@ $(document).ready(function(){
         setupCollapsibleTable();
         setupSideControls();
         parallax();
-        homeInit();
+
+        if ( $( 'body#home' ).length ) {
+            homeInit();
+        }
 
         $window.load(function(){
             addChart();

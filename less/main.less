@@ -1,7 +1,7 @@
 /**
  * Main style
  * @author mleone
- * @version 1.5.6
+ * @version 1.5.7
  **/
 
 // variables
@@ -315,7 +315,11 @@ a:visited {
 
     position: relative;
     overflow: hidden;
-    padding: 20px;
+    //padding: 20px;
+
+    @media (min-width: 380px) {
+        padding: 20px;
+    }
 
     > .panel-heading {
         padding-bottom: 0;
@@ -1126,6 +1130,59 @@ a:visited {
         background: transparent;
         border: 0;
         .box-shadow(none);
+    }
+}
+
+// balance
+#balance {
+    h3, h4 {
+        font-size: 18px;
+    }
+
+    h4 {
+        margin-top: 20px;
+        font-weight: @normal;
+    }
+
+    .panel-default {
+        border-color: #5E6A77;
+
+        .table {
+            th, td {
+                border-color: #5E6A77;
+            }
+
+            > tbody > tr > td {
+                vertical-align: middle;
+                padding: 4px;
+
+                @media (min-width: 380px) {
+                    padding: 8px;
+                }
+            }
+
+
+
+            td.text {
+                width: 66.6666%;
+
+                > h5 {
+                    margin: 0;
+                    font-weight: @heavy;
+                }
+
+                a {
+                    color: @textColor;
+                }
+
+            }
+
+            td.pos {
+                .h3 {
+                    font-weight: @heavy;
+                }
+            }
+        }
     }
 }
 

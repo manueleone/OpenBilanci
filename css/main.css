@@ -4,17 +4,17 @@
 /**
  * Main style
  * @author mleone
- * @version 1.5.6
+ * @version 1.5.7
  **/
 /**
  * Main LESS variables
  * @author mleone
- * @version 1.5.6
+ * @version 1.5.7
  **/
 /**
  * Common LESS mixins
  * @author mleone
- * @version 1.5.6
+ * @version 1.5.7
  **/
 body {
   background-color: #5e6a77;
@@ -281,7 +281,11 @@ a:visited {
 #main-content {
   position: relative;
   overflow: hidden;
-  padding: 20px;
+}
+@media (min-width: 380px) {
+  #main-content {
+    padding: 20px;
+  }
 }
 #main-content > .panel-heading {
   padding-bottom: 0;
@@ -919,6 +923,43 @@ a:visited {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+}
+#balance h3,
+#balance h4 {
+  font-size: 18px;
+}
+#balance h4 {
+  margin-top: 20px;
+  font-weight: 400;
+}
+#balance .panel-default {
+  border-color: #5E6A77;
+}
+#balance .panel-default .table th,
+#balance .panel-default .table td {
+  border-color: #5E6A77;
+}
+#balance .panel-default .table > tbody > tr > td {
+  vertical-align: middle;
+  padding: 4px;
+}
+@media (min-width: 380px) {
+  #balance .panel-default .table > tbody > tr > td {
+    padding: 8px;
+  }
+}
+#balance .panel-default .table td.text {
+  width: 66.6666%;
+}
+#balance .panel-default .table td.text > h5 {
+  margin: 0;
+  font-weight: 700;
+}
+#balance .panel-default .table td.text a {
+  color: #2a3036;
+}
+#balance .panel-default .table td.pos .h3 {
+  font-weight: 700;
 }
 #overview .text-center > small {
   display: block;
@@ -1894,7 +1935,7 @@ a.active .sprite-mappa-big {
 /**
  * Splash style
  * @author mleone
- * @version 1.5.6
+ * @version 1.5.7
  **/
 #splash .container-fluid {
   padding: 10px 0;
@@ -1986,7 +2027,7 @@ a.active .sprite-mappa-big {
 /**
  * Home style
  * @author mleone
- * @version 1.5.6
+ * @version 1.5.7
  **/
 #home .container-fluid {
   padding: 10px 0;
