@@ -1,22 +1,33 @@
 /**
  * Main scripts
  * @author mleone
- * @version 1.4.5
+ * @version 1.5.0
  **/
 
 $(document).ready(function(){
 
     // Main vars
-    var dev       = false,
-        scroll    = false,
-        $window   = $(window),
+    var dev       = true,
+        scroll    = true,
+        $window   = $( window ),
         $lock     = $( '#lock' ),
+        $main     = $( '#main-content'),
         $sidebar  = $( '#sidebar' ),
         $content  = $( '#content' ),
         $results  = $( '#results' ),
         $comments = $( '#comments' ),
         $controls = $( '#side-controls' ),
         $hook     = $( 'h2.text-alt' ).first();
+
+    // Function to get the Max value in Array
+    Array.max = function( array ){
+        return Math.max.apply( Math, array );
+    };
+
+    // Function to get the Min value in Array
+    Array.min = function( array ){
+       return Math.min.apply( Math, array );
+    };
 
     // Collapsible table
     function setupCollapsibleTable()
@@ -103,6 +114,36 @@ $(document).ready(function(){
         });
     }
 
+    function setupCollapsableMenu( $container ) {
+        $container.find( '.panel-collapse' ).on( 'click', function(e){
+            e.preventDefault();
+            var $togglers = $container.find( '.panel-collapse' ),
+                $toggler = $( this ),
+                $submenu = $toggler.next( 'ul' ),
+                $pin = null,
+                selected = 0;
+
+            $togglers.each(function( i, el ){
+                if ( !$toggler.is($( el )) ) {
+                    $( el ).addClass( 'collapse' );
+                    $( el ).next( 'ul' ).addClass( 'hidden' );
+                } else {
+                    $toggler.removeClass( 'collapse' );
+                    $submenu.toggleClass( 'hidden' );
+                }
+                selected = $( el ).next( 'ul' ).find( 'input:checked' ).length;
+                $pin = $( el ).prev()
+                if (selected > 0) {
+                    $pin.removeClass( 'hidden' );
+                } else {
+                    $pin.addClass( 'hidden' );
+                }
+            });
+        });
+
+        console.log('aa');
+    }
+
     // Push menu
     function setupPushMenu()
     {
@@ -124,7 +165,7 @@ $(document).ready(function(){
 
         $opener.on( 'click', function( e ){
             e.preventDefault();
-            $controls.animate({ left: -50 }, 200);
+            $controls.css({ left: -50 });
 
             $sidebar
                 .removeClass( clss.sidebar.off )
@@ -133,11 +174,15 @@ $(document).ready(function(){
                 .removeClass( clss.content.on )
                 .addClass( clss.content.off );
 
+            $( 'html, body' ).animate({
+                scrollTop: $sidebar.offset().top
+            }, 0);
+
         });
 
         $closer.on( 'click', function( e ){
             e.preventDefault();
-            $controls.animate({ left: -2 }, 200);
+            $controls.css({ left: -2 });
 
             $sidebar
                 .removeClass( clss.sidebar.on )
@@ -147,27 +192,7 @@ $(document).ready(function(){
                 .addClass( clss.content.on );
         });
 
-        $sidebar.find( '.panel-collapse' ).on( 'click', function(e){
-            e.preventDefault();
-            var $toggler = $( this ),
-                $submenu = $toggler.next(),
-                $pin =  $toggler.prev(),
-                selected = $submenu.find( 'input:checked' ).length;
-
-            if ( $toggler.hasClass( 'collapse' ) ) {
-                $submenu.removeClass( 'hidden' );
-                $toggler.removeClass( 'collapse' );
-            } else {
-                $submenu.addClass( 'hidden' );
-                $toggler.addClass( 'collapse' );
-            }
-
-            if (selected > 0) {
-                $pin.removeClass( 'hidden' );
-            } else {
-                $pin.addClass( 'hidden' );
-            }
-        });
+        setupCollapsableMenu( $sidebar );
     }
 
     // Settings menu
@@ -181,44 +206,81 @@ $(document).ready(function(){
 
         $panel.css( 'top', y ).show( 'fast' );
 
-        $opener.on( 'click', function(e){
+        $opener.on( 'click', function( e ){
+            console.log('aa');
             e.preventDefault();
-            $panel.animate({ left: 4 }, 400);
-            $controls.animate({ left: -50 }, 200);
+            $panel.css({ left: 4 });
+            $controls.css({ left: -50 });
         });
 
-        $closer.on( 'click', function(e){
+        $closer.on( 'click', function( e ){
+            console.log('bb');
             e.preventDefault();
-            $panel.animate({ left: -1 * (delta + 20) }, 400, function() {
-                $controls.animate({ left: -2 }, 200);
+            $panel.css({ left: -1 * (delta + 20) });
+            $controls.css({ left: -2 });
+        });
+
+        // temp...
+        if ( $( '#map-canvas' ).length ) {
+            console.log('sss');
+            offset = 200;
+            $opener = $( '#open-menu-schede, #open-menu-indicatori, #open-menu-filtri' );
+            $closer = null;
+
+            $opener.on( 'click', function( e ){
+                e.preventDefault();
+
+                var $this = $( this ),
+                    $target = $( $this.attr( 'href' ) ),
+                    $closer = $target.find( 'a.close-menu' );
+
+                $target
+                    .removeClass('hidden')
+                    .siblings().addClass('hidden');
+
+                $closer.on( 'click', function( e ){
+                    e.preventDefault();
+                    $target.addClass('hidden');
+                });
             });
 
-        });
+            setupCollapsableMenu( $( '#menu-indicatori' ) );
+        }
+
 
     }
 
     // Side controls
     function setupSideControls()
     {
-        var y = ( $hook.length > 0 ? $hook.offset().top - $hook.position().top - $hook.height() : 30 );
+        var y = ( $hook.length > 0 ? $hook.offset().top - $hook.position().top - $hook.height() : 30 ),
+            offset = 30;
 
-        $controls.css( 'top', y ).show( 'fast' );
-        setupPushMenu();
-        setupSettingsMenu();
+        // temp...
+        if ( $( '#map-canvas' ).length ) {
+            offset = 150;
+        }
 
-        if (scroll) {
-            y = 30;
-
-            $window.on( 'scroll', function() {
-                var offset = y + $window.scrollTop();
-                if ( $window.scrollTop() == y + $controls.height() ) {
-                    offset = $window.scrollTop() - y;
+        if ( scroll ) {
+            $window.on( 'load scroll', function() {
+                if ( $window.scrollTop() >= offset + $controls.height() - 30) {
+                    y = $window.scrollTop() - $controls.height() + 30;
+                    if ( y >= $main.height() ) {
+                        y = $main.height();
+                    }
                 } else {
-                    offset = y;
+                    y = offset;
                 }
-                $controls.css( 'top', offset );
+                $controls.css( 'top', y );
+                $( '#settings' ).css( 'top', y );
             });
         }
+
+        $window.on( 'load', function() {
+            $controls.show();
+        });
+        setupPushMenu();
+        setupSettingsMenu();
     }
 
     // Tooltips
@@ -228,14 +290,14 @@ $(document).ready(function(){
     }
 
     // Donut chart
-    function setDonutChart(holder, cx, cy, radius, scale, data)
+    function setDonutChart(holder, cx, cy, radius, data)
     {
         cx = cx || 100;
         cy = cy || 100;
         radius = radius || 50;
         data = data || [];
-        colors = ['#cccccc', '#cc6633'];
-        overs = ['#cccccc', '#888888'];
+        colors = ['#ceccc4', '#cc6633'];
+        overs = ['#ceccc4', '#888888'];
 
         var ms = 500,
             r = Raphael(holder),
@@ -247,6 +309,53 @@ $(document).ready(function(){
                 preserveValues: true,
                 donutDiameter: 0.6
             });
+    }
+
+    function setLineChart(holder, cx, cy, xdata, data)
+    {
+        cx = cx || 200;
+        cy = cy || 100;
+        data = data || [];
+        xdata = xdata || [0, 1, 3, 4, 5];
+
+        var vmax = Array.max(data),
+            idx = data.indexOf(vmax),
+            r = Raphael(holder, cx, cy),
+            pmax = null,
+            x = -5,
+            y = 5,
+            xlen = cx,
+            ylen = cy,
+            gutter = 20,
+            l = r.linechart(x, y, xlen, ylen, xdata, data, {
+                gutter: gutter,
+                nostroke: false,
+                width: 7,
+                colors: ['#ceccc4'],
+                axis: "0 0 0 0",
+                symbol: "circle",
+                smooth: false
+            });
+
+        //console.log(cx, cy, data, vmax, data.indexOf(vmax), );
+
+        // reset radius of all points
+        l.symbols.attr({ r: 0 });
+
+        // hightlight the point with higher y value
+        // for the last instead of max:
+        // l.symbols[0].length;
+        // idx = last-1
+        pmax = l.symbols[0][idx];
+        pmax.attr({ r: 8, fill: '#cc6633' });
+
+        // draw the line
+        // "M10 10L90 90" = draw a line: move to 10,10, line to 90,90
+        r.path( "M" + pmax.attr('cx') + " " + pmax.attr('cy') + "L" + pmax.attr('cx') + " " + (pmax.attr('cy') - 13) ).attr({ 'stroke-width': 3, stroke: '#cc6633' });
+
+        // print the label
+        r.text( pmax.attr('cx'), (pmax.attr('cy') - 20), xdata[idx]).attr({'font-size': 12, 'font-family': "Lato", 'font-weight': 700, fill: "#cc6633"});
+
     }
 
     // Rank chart
@@ -344,7 +453,8 @@ $(document).ready(function(){
     {
         $( '.chart' ).each( function(i, el) {
             var chartData = $( el ).data(),
-                val = parseFloat( chartData.chartValue ) || 0,
+                val = chartData.chartValue,
+                xdata = chartData.chartXdata,
                 w = parseFloat( chartData.chartWidth ) || false,
                 h = parseFloat( chartData.chartHeight ) || false,
                 r = parseFloat( chartData.chartRadius ) || false,
@@ -352,20 +462,26 @@ $(document).ready(function(){
 
             switch ( chartData.chartType ) {
                 case 'rank':
+                    val = parseFloat( val ) || 0;
                     w = w || 95;
                     h = h || 24;
                     setRankChart( el.id, w, h, scale, val );
                     break;
 
                 case 'trend':
+                    val = val.replace(/ /g,'').split(',').map(Number);
+                    xdata = xdata.replace(/ /g,'').split(',').map(Number);
+                    w = w || 95;
+                    h = h || 24;
+                    setLineChart( el.id, w, h, xdata, val );
                     break;
 
                 default:
                 case 'donut':
-                    val = parseInt( val / 100 );
+                    val = parseFloat( val ) / 100 ;
                     w = w || 20;
                     h = h || 20;
-                    h = r || 15;
+                    r = r || 15;
                     setDonutChart( el.id, w, h, r, scale, [1 - val, val] );
                     break;
             }
