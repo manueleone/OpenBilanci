@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>OpenBilanci</title>
+        <!-- Bootstrap -->
+        <link href="scripts/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <!-- Cusotm style -->
+        <link href="css/main.css" rel="stylesheet">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container">
+            <!-- Main header -->
+            <header id="header">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="navbar navbar-default navbar-main" role="navigation">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Mostra/nascondi nvigazione</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">Open<strong>Bilanci</strong><small>tagline</small></a>
+                                <form role="search" class="pull-left">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="city">Cerca un comune</label>
+                                        <input type="text" class="form-control" id="city" placeholder="CERCA UN COMUNE">
+                                        <span class="icon sprite-search"></span>
+                                    </div>
+                                    <!--button type="submit" class="btn btn-default">Submit</button-->
+                                </form>
+                            </div>
+
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="#"><span class="icon sprite-confronti"></span> confronti</a></li>
+                                    <li class="active"><a href="#"><span class="icon sprite-classifiche"></span> classifiche</a></li>
+                                    <li><a href="#"><span class="icon sprite-blog"></span> blog</a></li>
+                                </ul>
+                            </div><!-- /.nav-collapse -->
+                        </div><!-- /.navbar -->
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main panel -->
+            <div id="main-content" class="panel">
+
+                <div class="panel-heading">
+                    <a href="#" class="pull-right share">Condividi <span class="icon sprite-share"></span></a>
+                    <h1 class="panel-title">CLASSIFICHE</h1>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <a href="#" id="toggle-menu" role="button"><span class="icon sprite-toggle-menu"></span></a>
+                        </div>
+                    </div>
+                    <hr class="no-border">
+
+                    <div class="row">
+
+                        <div id="content" class="col-sm-12">
+                            <div class="row timeline">
+                                <div class="col-sm-12">
+                                    <img src="img/temp/timeline.png" class="img-responsive">
+                                </div>
+                            </div>
+
+                            <div id="results" class="row">
+                                <div class="col-md-8">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading clearfix">
+                                            <h3 class="panel-title pull-left">
+                                                8100 COMUNI
+                                            </h3>
+                                            <form role="search" class="form-inline pull-left">
+                                                <div class="form-group search">
+                                                    <label class="sr-only" for="city1">Cerca un comune</label>
+                                                    <input type="text" class="form-control" id="city1" placeholder="CERCA UN COMUNE">
+                                                    <span class="icon sprite-search-alt"></span>
+                                                </div>
+                                                <!--button type="submit" class="btn btn-default">Submit</button-->
+                                            </form>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h4>VELOCITA DI RISCOSSIONE DELLE ENTRATE PROPRIE</h4>
+                                            <p class="small">in
+                                                <span>INDICATORI:</span>
+                                                <span>TITOLO</span>
+                                                <span class="sep">›</span>
+                                                <span>VOCE DI III LIVELLO</span>
+                                            </p>
+                                            <div class="pagination-wrapper clearfix">
+                                                <ul>
+                                                    <li><a href="#"><span class="icon sprite-arrow-left"></span></a></li>
+                                                    <li class="active"><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><span>...</span></li>
+                                                    <li><a href="#">15</a></li>
+                                                    <li class="more"><a href="#"><span class="icon sprite-arrow-right"></span></a></li>
+                                                </ul>
+                                                <div  class="pull-right">
+                                                    <div class="dropdown pull-left">
+                                                        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+                                                            RISULTATI: <span>10</span>
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">10</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">20</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">50</a></li>
+                                                            <li role="presentation" class="divider"></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tutti</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <a href="#" class="refresh"><span class="icon sprite-refresh"></span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="col-sm-1 rate">
+                                                            <span class="h2">100</span>
+                                                        </td>
+                                                        <td class="col-sm-9 text">
+                                                            <h4><a href="#" title="vai all’andamento dell’indicatore per questo comune">ALTRO COMUNE</a></h4>
+                                                            <p>PG, umbria</p>
+
+                                                            <div class="media">
+                                                                <figure class="pull-left img-circle">
+                                                                    <img class="media-object" src="http://cambelt.co/42x42/AS?color=a0180d" alt="avatar">
+                                                                </figure>
+                                                                <div class="media-body">
+                                                                    <p class="h4"><a href="#">N. Cognome</a></p>
+                                                                    <p class="small">Lista</p>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                        <td class="col-sm-1 pos">
+                                                            <span class="h3">1°</span>
+                                                        </td>
+                                                        <td class="col-sm-1 trend">
+                                                            <span class="icon sprite-trend-up-3"></span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="rate">
+                                                            <span class="h2">98<span class="small">.20</span></span>
+                                                        </td>
+                                                        <td class="text">
+                                                            <h4><a href="#" title="vai all’andamento dell’indicatore per questo comune">ALTRO COMUNE</a></h4>
+                                                            <p>PG, umbria</p>
+
+                                                            <div class="media">
+                                                                <figure class="pull-left img-circle">
+                                                                    <img class="media-object" src="http://cambelt.co/42x42/AS?color=a0180d" alt="avatar">
+                                                                </figure>
+                                                                <div class="media-body">
+                                                                    <p class="h4"><a href="#">N. Cognome</a></p>
+                                                                    <p class="small">Lista</p>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                        <td class="pos">
+                                                            <span class="h3">2°</span>
+                                                        </td>
+                                                        <td class="trend">
+                                                            <span class="icon sprite-trend-up-2"></span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="rate">
+                                                            <span class="h2">95<span class="small">.40</span></span>
+                                                        </td>
+                                                        <td class="text">
+                                                            <h4><a href="#" title="vai all’andamento dell’indicatore per questo comune">ALTRO COMUNE</a></h4>
+                                                            <p>PG, umbria</p>
+
+                                                            <div class="media">
+                                                                <figure class="pull-left img-circle">
+                                                                    <img class="media-object" src="http://cambelt.co/42x42/AS?color=555555" alt="avatar">
+                                                                </figure>
+                                                                <div class="media-body">
+                                                                    <p class="h4"><a href="#">N. Cognome</a></p>
+                                                                    <p class="small">Lista</p>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                        <td class="pos">
+                                                            <span class="h3">3°</span>
+                                                        </td>
+                                                        <td class="trend">
+                                                            <span class="icon sprite-trend-up-1"></span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="rate">
+                                                            <span class="h2">90<span class="small">.60</span></span>
+                                                        </td>
+                                                        <td class="text">
+                                                            <h4><a href="#">ALTRO COMUNE</a></h4>
+                                                            <p>PG, umbria</p>
+
+                                                            <div class="media">
+                                                                <figure class="pull-left img-circle">
+                                                                    <img class="media-object" src="http://cambelt.co/42x42/AS?color=333333" alt="avatar">
+                                                                </figure>
+                                                                <div class="media-body">
+                                                                    <p class="h4"><a href="#">N. Cognome</a></p>
+                                                                    <p class="small">Lista</p>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                        <td class="pos">
+                                                            <span class="h3">4°</span>
+                                                        </td>
+                                                        <td class="trend">
+                                                            <span class="icon sprite-trend"></span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="rate">
+                                                            <span class="h2">89<span class="small">.80</span></span>
+                                                        </td>
+                                                        <td class="text">
+                                                            <h4><a href="#">ALTRO COMUNE</a></h4>
+                                                            <p>PG, umbria</p>
+
+                                                            <div class="media">
+                                                                <figure class="pull-left img-circle">
+                                                                    <img class="media-object" src="http://cambelt.co/42x42/AS?color=a0180d" alt="avatar">
+                                                                </figure>
+                                                                <div class="media-body">
+                                                                    <p class="h4"><a href="#">N. Cognome</a></p>
+                                                                    <p class="small">Lista</p>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                        <td class="pos">
+                                                            <span class="h3">5°</span>
+                                                        </td>
+                                                        <td class="trend">
+                                                            <span class="icon sprite-trend-down-1"></span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="rate">
+                                                            <span class="h2">88<span class="small">.20</span></span>
+                                                        </td>
+                                                        <td class="text">
+                                                            <h4><a href="#">ALTRO COMUNE</a></h4>
+                                                            <p>PG, umbria</p>
+
+                                                            <div class="media">
+                                                                <figure class="pull-left img-circle">
+                                                                    <img class="media-object" src="http://cambelt.co/42x42/AS?color=e55f3b" alt="avatar">
+                                                                </figure>
+                                                                <div class="media-body">
+                                                                    <p class="h4"><a href="#">N. Cognome</a></p>
+                                                                    <p class="small">Lista</p>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                        <td class="pos">
+                                                            <span class="h3">6°</span>
+                                                        </td>
+                                                        <td class="trend">
+                                                            <span class="icon sprite-trend-down-2"></span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="rate">
+                                                            <span class="h2">79<span class="small">.80</span></span>
+                                                        </td>
+                                                        <td class="text">
+                                                            <h4><a href="#">ALTRO COMUNE</a></h4>
+                                                            <p>PG, umbria</p>
+
+                                                            <div class="media">
+                                                                <figure class="pull-left img-circle">
+                                                                    <img class="media-object" src="http://cambelt.co/42x42/AS?color=e55f3b" alt="avatar">
+                                                                </figure>
+                                                                <div class="media-body">
+                                                                    <p class="h4"><a href="#">N. Cognome</a></p>
+                                                                    <p class="small">Lista</p>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                        <td class="pos">
+                                                            <span class="h3">7°</span>
+                                                        </td>
+                                                        <td class="trend">
+                                                            <span class="icon sprite-trend-down-3"></span>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="panel-footer">
+                                            <div class="pagination-wrapper clearfix">
+                                                <ul>
+                                                    <li><a href="#"><span class="icon sprite-arrow-left"></span></a></li>
+                                                    <li class="active"><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><span>...</span></li>
+                                                    <li><a href="#">15</a></li>
+                                                    <li class="more"><a href="#"><span class="icon sprite-arrow-right"></span></a></li>
+                                                </ul>
+                                                <div  class="pull-right">
+                                                    <div class="dropdown pull-left">
+                                                        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+                                                            RISULTATI: <span>10</span>
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">10</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">20</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">50</a></li>
+                                                            <li role="presentation" class="divider"></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tutti</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <a href="#" class="refresh"><span class="icon sprite-refresh"></span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <aside id="filters" class="col-md-4">
+                                    <form>
+                                    <div class="panel panel-default">
+
+                                        <div class="panel-heading">
+                                            <div class="pull-right">Rimuovi tutti <a href="#"><span class="icon sprite-delete"></span></a></div>
+                                            <h3 class="panel-title">FILTRA</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="enabled">
+                                                <p class="h4">REGIONE</p>
+                                                <ul class="list-inline">
+                                                    <li>
+                                                        Regione 1
+                                                        <a href="#"><span class="icon sprite-delete-small"></span></a>
+                                                    </li>
+                                                    <li>
+                                                        Regione 2
+                                                        <a href="#"><span class="icon sprite-delete-small"></span></a>
+                                                    </li>
+                                                    <li>
+                                                        Regione 3
+                                                        <a href="#"><span class="icon sprite-delete-small"></span></a>
+                                                    </li>
+                                                </ul>
+
+                                                <p class="h4">DIMENSI0NE</p>
+                                                <ul class="list-inline">
+                                                    <li>
+                                                        Centri Piccolissimi
+                                                        <a href="#"><span class="icon sprite-delete-small"></span></a>
+                                                    </li>
+                                                </ul>
+
+                                                <p class="h4">CLASSE</p>
+                                                <ul class="list-inline">
+                                                    <li>
+                                                        Classe 1
+                                                        <a href="#"><span class="icon sprite-delete-small"></span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <ul class="list-group">
+                                            <li class="list-group-item label">FILTRA PER REGIONE</li>
+                                            <li class="list-group-item"><input type="checkbox" name="" value="" checked="checked"> Regione 1</li>
+                                            <li class="list-group-item"><input type="checkbox" name="" value="" checked="checked"> Regione 2</li>
+                                            <li class="list-group-item"><input type="checkbox" name="" value="" checked="checked"> Regione 3</li>
+                                            <li class="list-group-item"><input type="checkbox" name="" value=""> Porta ac consectetur ac</li>
+                                            <li class="list-group-item"><input type="checkbox" name="" value=""> Vestibulum at eros</li>
+                                        </ul>
+
+                                        <ul class="list-group">
+                                            <li class="list-group-item label">FILTRA PER DIMENSIONE</li>
+                                            <li class="list-group-item"><input type="checkbox" name="" value="" checked="checked"> Centri Piccolissimi</li>
+                                            <li class="list-group-item"><input type="checkbox" name="" value=""> Dapibus ac facilisis in</li>
+                                            <li class="list-group-item"><input type="checkbox" name="" value=""> Morbi leo risus</li>
+                                            <li class="list-group-item"><input type="checkbox" name="" value=""> Porta ac consectetur ac</li>
+                                            <li class="list-group-item"><input type="checkbox" name="" value=""> Vestibulum at eros</li>
+                                        </ul>
+
+                                        <ul class="list-group">
+                                            <li class="list-group-item label">FILTRA PER CLASSE</li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="checkbox" name="" value="" checked="checked"> I
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="checkbox" name="" value=""> II
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="checkbox" name="" value=""> III
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="checkbox" name="" value=""> IV
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="checkbox" name="" value=""> V
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="checkbox" name="" value=""> VI
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    </form>
+                                </aside> <!-- /#filters -->
+                            </div> <!-- /#results -->
+
+                            <div id="comments" class="row">
+                                <div class="col-sm-12">
+                                    <h3>3 COMMENTI</h3>
+
+                                    <form class="form clearfix" role="form">
+                                        <span class="icon sprite-users text-center pull-left"></span>
+                                        <div class="form-group pull-left">
+                                            <label class="sr-only" for="message">Email address</label>
+                                            <input type="text" class="form-control" id="message" placeholder="Partecipa alla discussione">
+                                        </div>
+                                    </form>
+
+                                    <ul class="list-unstyled">
+                                        <li class="media">
+                                            <figure class="pull-left img-circle">
+                                                <img class="media-object" src="http://cambelt.co/42x42/ML?color=5e6a77" alt="avatar">
+                                            </figure>
+                                            <article class="media-body">
+                                                <header>
+                                                    <h4>Nome Utente <small>16 ore fa</small></h4>
+                                                </header>
+                                                <div class="text">
+                                                    <p>In publishing and graphic design, lorem ipsum is a placeholder In publishing and graphic design, lorem ipsum is a placeholder</p>
+                                                </div>
+                                                <footer>
+                                                    <a href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                                                    <a href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
+                                                    <a href="#">Rispondi</a>
+                                                    <a href="#">Condividi</a>
+                                                </footer>
+                                            </article>
+                                        </li>
+
+                                        <li class="media">
+                                            <figure class="pull-left img-circle">
+                                                <img class="media-object" src="http://cambelt.co/42x42/FG?color=e55f3b" alt="avatar">
+                                            </figure>
+                                            <article class="media-body">
+                                                <header>
+                                                    <h4>Nome Utente <small>16 ore fa</small></h4>
+                                                </header>
+                                                <div class="text">
+                                                    <p>In publishing and graphic design, lorem ipsum is a placeholder In publishing and graphic design, lorem ipsum is a placeholder In publishing and graphic design, lorem ipsum is a placeholder</p>
+                                                </div>
+                                                <footer>
+                                                    <a href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                                                    <a href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
+                                                    <a href="#">Rispondi</a>
+                                                    <a href="#">Condividi</a>
+                                                </footer>
+                                            </article>
+                                        </li>
+
+                                        <li class="media">
+                                            <figure class="pull-left img-circle">
+                                                <img class="media-object" src="http://cambelt.co/42x42/AS?color=a0180d" alt="avatar">
+                                            </figure>
+                                            <article class="media-body">
+                                                <header>
+                                                    <h4>Nome Utente <small>16 ore fa</small></h4>
+                                                </header>
+                                                <div class="text">
+                                                    <p>In publishing and graphic design, lorem ipsum is a placeholder</p>
+                                                </div>
+                                                <footer>
+                                                    <a href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                                                    <a href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
+                                                    <a href="#">Rispondi</a>
+                                                    <a href="#">Condividi</a>
+                                                </footer>
+                                            </article>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div><!-- /#comments -->
+
+                        </div><!-- /#content -->
+                        <aside id="sidebar" class="hidden">
+
+                            <ul class="nav nav-stacked menu">
+                                <li class="active">
+                                    <a href="#"><span class="icon sprite-autonomia-finanziaria"></span> AUTONOMIA FINANZIARIA</a>
+                                    <div class="scrollbox">
+
+                                        <ul class="nav nav-stacked">
+                                            <li>
+                                                <a href="#" class="pin pull-right" data-toggle="tooltip" data-container="body" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                <a href="#"> Velocità di riscossione delle entrate proprie</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="pin pull-right" data-toggle="tooltip" data-container="body" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                <a href="#">Pressione tributaria per abitante</a>
+                                                <ul class="nav nav-stacked">
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" data-container="body" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Pressione tributaria per...</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="pin pull-right" data-toggle="tooltip" data-container="body" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                <a href="#">Risultato d’amministrazione valutato al fair value</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="pin pull-right" data-toggle="tooltip" data-container="body" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                <a href="#">Consistenza ...</a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" class="pin pull-right" data-toggle="tooltip" data-container="body" title="lorem ipsum"><span class="icon sprite-alert"></span></a>
+                                    <a href="#"><span class="icon sprite-capacita-programmatoria"></span> CAPACITA PROGRAMMATORIA</a>
+                                    <div class="scrollbox hidden">
+
+                                        <ul class="nav nav-stacked">
+                                            <li class="active">
+                                                <a href="#">voce 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 3</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 4</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 5</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 6</a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" class="pin pull-right" data-toggle="tooltip" data-container="body" title="lorem ipsum"><span class="icon sprite-alert"></span></a>
+                                    <a href="#"><span class="icon sprite-peso-amministrazione"></span> PESO DELL’AMMINISTRAZIONE</a>
+                                    <div class="scrollbox hidden">
+
+                                        <ul class="nav nav-stacked">
+                                            <li class="active">
+                                                <a href="#">voce 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 3</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 4</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 5</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 6</a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="icon sprite-propensione-sviluppo"></span> PROPENSIONE ALLO SVILUPPO</a>
+                                    <div class="scrollbox hidden">
+
+                                        <ul class="nav nav-stacked">
+                                            <li class="active">
+                                                <a href="#">voce 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 3</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 4</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 5</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 6</a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" class="pin pull-right" data-toggle="tooltip" data-container="body" title="lorem ipsum"><span class="icon sprite-alert"></span></a>
+                                    <a href="#"><span class="icon sprite-sostenibilita"></span> SOSTENIBILITA</a>
+                                    <div class="scrollbox hidden">
+
+                                        <ul class="nav nav-stacked">
+                                            <li class="active">
+                                                <a href="#">voce 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 3</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 4</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 5</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 6</a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="icon sprite-indicatori"></span> INDICATORI DI CONTESTO</a>
+                                    <div class="scrollbox hidden">
+
+                                        <ul class="nav nav-stacked">
+                                            <li class="active">
+                                                <a href="#">voce 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 3</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 4</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 5</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">voce 6</a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </aside><!-- /#sidebar -->
+
+                    </div>
+
+                </div><!-- /.panel-body -->
+            </div><!-- /.panel -->
+
+            <!-- Main footer -->
+            <footer id="footer">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-3">
+                        <h4>il progetto</h4>
+                        <ul class="nav nav-stacked">
+                            <li><a href="#">confronti</a></li>
+                            <li class="active"><a href="#">classifiche</a></li>
+                            <li><a href="#">blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <h4>cosa puoi fare</h4>
+                        <ul class="nav nav-stacked">
+                            <li><a href="#">confronti</a></li>
+                            <li><a href="#">classifiche</a></li>
+                            <li><a href="#">blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <h4>servizi premium</h4>
+                        <ul class="nav nav-stacked">
+                            <li><a href="#">confronti</a></li>
+                            <li><a href="#">classifiche</a></li>
+                            <li><a href="#">blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <h4>contatti</h4>
+                        <ul class="nav nav-stacked">
+                            <li><a href="#">confronti</a></li>
+                            <li><a href="#">classifiche</a></li>
+                            <li><a href="#">blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="no-border">
+
+                <h5>con il contributo di</h5>
+
+                <ul class="list-unstyled row partners">
+                    <li class="col-xs-6 col-sm-3">
+                        <img class="img-circle" src="http://cambelt.co/60x60/1?color=ffffff" alt="">
+                    </li>
+                    <li class="col-xs-6 col-sm-3">
+                        <img class="img-circle" src="http://cambelt.co/60x60/2?color=ffffff" alt="">
+                    </li>
+                    <li class="col-xs-6 col-sm-3">
+                        <img class="img-circle" src="http://cambelt.co/60x60/3?color=ffffff" alt="">
+                    </li>
+                    <li class="col-xs-6 col-sm-3">
+                        <img class="img-circle" src="http://cambelt.co/60x60/4?color=ffffff" alt="">
+                    </li>
+                </ul>
+            </footer>
+        </div> <!-- /.container -->
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="scripts/vendor/jquery/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="scripts/vendor/bootstrap/dist/js/bootstrap.js"></script>
+        <!-- Enscroll -->
+        <script src="scripts/vendor/enscroll/js/mylibs/enscroll.js"></script>
+        <!-- Custom scripts -->
+        <script src="scripts/main.js"></script>
+        <!-- Live.js for developement>
+        <script src="scripts/live.js"></script -->
+    </body>
+</html>

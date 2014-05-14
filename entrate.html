@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>OpenBilanci</title>
+        <!-- Bootstrap -->
+        <link href="scripts/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <!-- Cusotm style -->
+        <link href="css/main.css" rel="stylesheet">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container">
+            <!-- Main header -->
+            <header id="header">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="navbar navbar-default navbar-main" role="navigation">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Mostra/nascondi nvigazione</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">Open<strong>Bilanci</strong><small>tagline</small></a>
+                                <form role="search" class="pull-left">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="city">Cerca un comune</label>
+                                        <input type="text" class="form-control" id="city" placeholder="CERCA UN COMUNE">
+                                        <span class="icon sprite-search"></span>
+                                    </div>
+                                    <!--button type="submit" class="btn btn-default">Submit</button-->
+                                </form>
+                            </div>
+
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="#"><span class="icon sprite-confronti"></span> confronti</a></li>
+                                    <li><a href="#"><span class="icon sprite-classifiche"></span> classifiche</a></li>
+                                    <li><a href="#"><span class="icon sprite-blog"></span> blog</a></li>
+                                </ul>
+                            </div><!-- /.nav-collapse -->
+                        </div><!-- /.navbar -->
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main panel -->
+            <div id="main-content" class="panel">
+
+                <div class="panel-heading">
+                    <a href="#" class="pull-right share">Condividi <span class="icon sprite-share"></span></a>
+                    <h1 class="panel-title">CASTIGLIONE DEL LAGO</h1>
+                    <p class="details">
+                        <span class="location">VA, lombardia</span>
+                        <span class="category"><span class="icon sprite-small-town"></span> CENTRI PICCOLISSIMI, 1.203 abitanti</span>
+                    </p>
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <nav class="navbar navbar-subnav" role="navigation">
+                                <ul class="nav nav-justified">
+                                    <li><a href="#">bilancio</a></li>
+                                    <li class="active"><a href="#">entrate</a></li>
+                                    <li><a href="#">spese</a></li>
+                                    <li><a href="#">indicatori</a></li>
+                                </ul>
+                            </nav>
+                            <h2 class="panel-title text-alt">entrate</h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div id="content" class="col-sm-12">
+
+                            <div class="row timeline">
+                                <div class="col-sm-12">
+                                    <img src="img/temp/timeline-entrate.png" class="img-responsive">
+                                </div>
+                            </div>
+
+                            <div id="results" class="row">
+                                <div class="col-sm-12">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs nav-justified">
+                                        <li class="active"><a href="#tab-1" data-toggle="tab">COMPOSIZIONE DEL BILANCIO</a></li>
+                                        <li><a href="#tab-2" data-toggle="tab">ANDAMENTO NEL TEMPO E DETTAGLIO</a></li>
+                                    </ul>
+
+                                    <hr class="no-border">
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+
+                                        <div class="tab-pane fade in active" id="tab-1">
+                                            <figure>
+                                                <img src="img/temp/entrate.png" class="img-responsive" alt="Responsive image">
+                                            </figure>
+                                            <hr class="no-border">
+                                        </div> <!-- /.tab-pane -->
+
+                                        <div class="tab-pane fade" id="tab-2">
+
+                                            <!-- Default panel contents -->
+                                            <figure>
+                                                <img src="img/temp/indicatori.png" class="img-responsive" alt="Responsive image">
+                                            </figure>
+
+                                            <hr class="no-border">
+
+                                            <!-- Panel header -->
+                                            <header class="clearfix">
+                                                <h3>DETTAGLIO 2011</h3>
+                                                <div class="dropdown">
+                                                    <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                                                        FUNZIONI
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                                                        <li role="presentation" class="divider"></li>
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                                                    </ul>
+                                                </div>
+                                                <a href="#" class="btn btn-sm btn-default more-info" data-open="mostra interventi <span class='glyphicon glyphicon-chevron-down'></span>" data-close="chiudi <span class='glyphicon glyphicon-chevron-up'></span>">mostra interventi <span class="glyphicon glyphicon-chevron-down"></span></a>
+                                            </header>
+
+                                            <!-- Main table -->
+                                            <div class="table-responsive">
+                                                <table class="table entrate no-hover">
+                                                    <tbody>
+                                                        <tr class="panel-heading">
+                                                            <td class="col-sm-5 entry">
+                                                                <a class="collapse-toggle" href="#row1"><span class="icon sprite-plus"></span></a>
+                                                                VENDITE E TRASFERIMENTI DI CAPITALI
+                                                            </td>
+                                                            <td class="col-sm-3 actions">
+                                                                <p class="h3">
+                                                                    100.000 <small>M €</small>
+                                                                </p>
+                                                                <p class="small"><strong>0,97 €</strong> PROCAPITE</p>
+                                                            </td>
+                                                            <td class="col-sm-4 chart-wrapper">
+                                                                <div class="chart pull-left" id="pie1" data-chart-value="10"></div>
+                                                                <ul class="list-unstyled small">
+                                                                    <li>
+                                                                        <span class="label">INVESTIMENTI</span><span class="value"> 25 MLD €</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="label">SPESE CORRENTI</span><span class="value"> 25 MLD €</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="panel-collapse collapse" id="row1">
+                                                            <td colspan="3">
+                                                                <p>Testo corrente ... In publishing and graphic design, lorem ipsum is a placeholder text (filler text) commonly</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="panel-heading">
+                                                            <td class="col-sm-5 entry">
+                                                                <a class="collapse-toggle" href="#row2"><span class="icon sprite-plus"></span></a>
+                                                                RITENUTE PER IL PERSONALE
+                                                            </td>
+                                                            <td class="col-sm-3 actions">
+                                                                <p class="h3">
+                                                                    100.000 <small>M €</small>
+                                                                </p>
+                                                                <p class="small"><strong>0,97 €</strong> PROCAPITE</p>
+                                                            </td>
+                                                            <td class="col-sm-4 chart-wrapper">
+                                                                <div class="chart pull-left" id="pie2" data-chart-value="60"></div>
+                                                                <ul class="list-unstyled small">
+                                                                    <li>
+                                                                        <span class="label">INVESTIMENTI</span><span class="value"> 25 MLD €</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="label">SPESE CORRENTI</span><span class="value"> 25 MLD €</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="panel-collapse collapse" id="row2">
+                                                            <td colspan="3">
+                                                                <p>Testo corrente ... In publishing and graphic design, lorem ipsum is a placeholder text (filler text) commonly</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="panel-heading">
+                                                            <td class="col-sm-5 entry">
+                                                                <a class="collapse-toggle" href="#row3"><span class="icon sprite-plus"></span></a>
+                                                                IMPOSTE E TASSE
+                                                            </td>
+                                                            <td class="col-sm-3 actions">
+                                                                <p class="h3">
+                                                                    100.000 <small>M €</small>
+                                                                </p>
+                                                                <p class="small"><strong>0,97 €</strong> PROCAPITE</p>
+                                                            </td>
+                                                            <td class="col-sm-4 chart-wrapper">
+                                                                <div class="chart pull-left" id="pie3" data-chart-value="90"></div>
+                                                                <ul class="list-unstyled small">
+                                                                    <li>
+                                                                        <span class="label">INVESTIMENTI</span><span class="value"> 25 MLD €</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="label">SPESE CORRENTI</span><span class="value"> 25 MLD €</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="panel-collapse collapse" id="row3">
+                                                            <td colspan="3">
+                                                                <p>
+                                                                    In publishing and graphic design, lorem ipsum is a placeholder text... In publishing and graphic design, lorem ipsum is a placeholder text...
+                                                                </p>
+
+                                                                <!-- Sub table level 1 -->
+                                                                <table class="table table-condensed">
+                                                                    <tbody>
+                                                                        <tr class="panel-heading">
+                                                                            <td class="col-sm-5 entry">
+                                                                                <a class="collapse-toggle" href="#row31"><span class="icon sprite-plus"></span></a>
+                                                                                IMPOSTE E TASSE<br>
+                                                                                <small>› IMPOSTE</small>
+                                                                            </td>
+                                                                            <td class="col-sm-3 actions">
+                                                                                <p class="h3">
+                                                                                    100.000 <small>M €</small>
+                                                                                </p>
+                                                                                <p class="small"><strong>0,97 €</strong> PROCAPITE</p>
+                                                                            </td>
+                                                                            <td class="col-sm-4 chart-wrapper">
+                                                                                <div class="chart pull-left" id="pie31" data-chart-value="10"></div>
+                                                                                <ul class="list-unstyled small">
+                                                                                    <li>
+                                                                                        <span class="label">INVESTIMENTI</span><span class="value"> 25 MLD €</span>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <span class="label">SPESE CORRENTI</span><span class="value"> 25 MLD €</span>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="panel-collapse collapse" id="row31">
+                                                                            <td colspan="3" class="col-sm-12 details">
+                                                                                <p>Testo corrente ... In publishing and graphic design, lorem ipsum is a placeholder text (filler text) commonly</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="panel-heading">
+                                                                            <td class="col-sm-5 entry">
+                                                                                <a class="collapse-toggle" href="#row32"><span class="icon sprite-plus"></span></a>
+                                                                                IMPOSTE E TASSE<br>
+                                                                                <small>› TASSE</small>
+                                                                            </td>
+                                                                            <td class="col-sm-3 actions">
+                                                                                <p class="h3">
+                                                                                    100.000 <small>M €</small>
+                                                                                </p>
+                                                                                <p class="small"><strong>0,97 €</strong> PROCAPITE</p>
+                                                                            </td>
+                                                                            <td class="col-sm-4 chart-wrapper">
+                                                                                <div class="chart pull-left" id="pie32" data-chart-value="10"></div>
+                                                                                <ul class="list-unstyled small">
+                                                                                    <li>
+                                                                                        <span class="label">INVESTIMENTI</span><span class="value"> 25 MLD €</span>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <span class="label">SPESE CORRENTI</span><span class="value"> 25 MLD €</span>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="panel-collapse collapse" id="row32">
+                                                                            <td colspan="3" class="col-sm-12 details">
+                                                                                <p>
+                                                                                    <a href="#" class="btn btn-sm btn-default more-info pull-right" data-open="andamento nel tempo <span class='glyphicon glyphicon-chevron-down'></span>" data-close="chiudi <span class='glyphicon glyphicon-chevron-up'></span>">andamento nel tempo <span class="glyphicon glyphicon-chevron-down"></span></a>
+                                                                                    Testo corrente ... In publishing and graphic design, lorem ipsum is a placeholder text (filler text) commonly
+                                                                                </p>
+                                                                                <figure class="trend hidden">
+                                                                                    <img alt="Responsive image" class="img-responsive" src="img/temp/indicatori.png">
+                                                                                </figure>
+
+                                                                                <!-- Sub table level 1 -->
+                                                                                <table class="table table-condensed">
+                                                                                    <tbody>
+                                                                                        <tr class="panel-heading">
+                                                                                            <td class="col-sm-5 entry">
+                                                                                                <a class="collapse-toggle" href="#row331"><span class="icon sprite-plus"></span></a>
+                                                                                                IMPOSTE E TASSE<br>
+                                                                                                <small>› TASSE › RIFIUTI</small>
+                                                                                            </td>
+                                                                                            <td class="col-sm-3 actions">
+                                                                                                <p class="h3">
+                                                                                                    100.000 <small>M €</small>
+                                                                                                </p>
+                                                                                                <p class="small"><strong>0,97 €</strong> PROCAPITE</p>
+                                                                                            </td>
+                                                                                            <td class="col-sm-4 chart-wrapper">
+                                                                                                <div class="chart pull-left" id="pie331" data-chart-value="10"></div>
+                                                                                                <ul class="list-unstyled small">
+                                                                                                    <li>
+                                                                                                        <span class="label">INVESTIMENTI</span><span class="value"> 25 MLD €</span>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <span class="label">SPESE CORRENTI</span><span class="value"> 25 MLD €</span>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr class="panel-collapse collapse" id="row331">
+                                                                                            <td colspan="3" class="col-sm-12 details">
+                                                                                                <p>Testo corrente ... In publishing and graphic design, lorem ipsum is a placeholder text (filler text) commonly</p>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr class="panel-heading">
+                                                                                            <td class="col-sm-5 entry">
+                                                                                                <a class="collapse-toggle" href="#row332"><span class="icon sprite-plus"></span></a>
+                                                                                                IMPOSTE E TASSE<br>
+                                                                                                <small>› TASSE › TASSE (ALTRO)</small>
+                                                                                            </td>
+                                                                                            <td class="col-sm-3 actions">
+                                                                                                <p class="h3">
+                                                                                                    100.000 <small>M €</small>
+                                                                                                </p>
+                                                                                                <p class="small"><strong>0,97 €</strong> PROCAPITE</p>
+                                                                                            </td>
+                                                                                            <td class="col-sm-4 chart-wrapper">
+                                                                                                <div class="chart pull-left" id="pie332" data-chart-value="10"></div>
+                                                                                                <ul class="list-unstyled small">
+                                                                                                    <li>
+                                                                                                        <span class="label">INVESTIMENTI</span><span class="value"> 25 MLD €</span>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <span class="label">SPESE CORRENTI</span><span class="value"> 25 MLD €</span>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr class="panel-collapse collapse" id="row332">
+                                                                                            <td colspan="3" class="col-sm-12 details">
+                                                                                                <p>Testo corrente ... In publishing and graphic design, lorem ipsum is a placeholder text (filler text) commonly</p>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table><!-- /sub-table -->
+
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="panel-heading">
+                                                                            <td class="col-sm-5 entry">
+                                                                                <a class="collapse-toggle" href="#row33"><span class="icon sprite-plus"></span></a>
+                                                                                IMPOSTE E TASSE<br>
+                                                                                <small>› ALTRI TRIBUTI</small>
+                                                                            </td>
+                                                                            <td class="col-sm-3 actions">
+                                                                                <p class="h3">
+                                                                                    100.000 <small>M €</small>
+                                                                                </p>
+                                                                                <p class="small"><strong>0,97 €</strong> PROCAPITE</p>
+                                                                            </td>
+                                                                            <td class="col-sm-4 chart-wrapper">
+                                                                                <div class="chart pull-left" id="pie33" data-chart-value="10"></div>
+                                                                                <ul class="list-unstyled small">
+                                                                                    <li>
+                                                                                        <span class="label">INVESTIMENTI</span><span class="value"> 25 MLD €</span>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <span class="label">SPESE CORRENTI</span><span class="value"> 25 MLD €</span>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="panel-collapse collapse" id="row33">
+                                                                            <td colspan="3" class="col-sm-12 details">
+                                                                                <p>Testo corrente ... In publishing and graphic design, lorem ipsum is a placeholder text (filler text) commonly</p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table><!-- /sub-table -->
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div> <!-- /table-responsive -->
+
+                                        </div> <!-- /.tab-pane -->
+
+                                    </div> <!-- /.tab-content -->
+
+                                </div>
+                            </div> <!-- /#results -->
+
+                            <div id="comments" class="row">
+                                <div class="col-sm-12">
+                                    <h3>3 COMMENTI</h3>
+
+                                    <form class="form clearfix" role="form">
+                                        <span class="icon sprite-users text-center pull-left"></span>
+                                        <div class="form-group pull-left">
+                                            <label class="sr-only" for="message">Email address</label>
+                                            <input type="text" class="form-control" id="message" placeholder="Partecipa alla discussione">
+                                        </div>
+                                    </form>
+
+                                    <ul class="list-unstyled">
+                                        <li class="media">
+                                            <figure class="pull-left img-circle">
+                                                <img class="media-object" src="http://cambelt.co/42x42/ML?color=5e6a77" alt="avatar">
+                                            </figure>
+                                            <article class="media-body">
+                                                <header>
+                                                    <h4>Nome Utente <small>16 ore fa</small></h4>
+                                                </header>
+                                                <div class="text">
+                                                    <p>In publishing and graphic design, lorem ipsum is a placeholder In publishing and graphic design, lorem ipsum is a placeholder</p>
+                                                </div>
+                                                <footer>
+                                                    <a href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                                                    <a href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
+                                                    <a href="#">Rispondi</a>
+                                                    <a href="#">Condividi</a>
+                                                </footer>
+                                            </article>
+                                        </li>
+
+                                        <li class="media">
+                                            <figure class="pull-left img-circle">
+                                                <img class="media-object" src="http://cambelt.co/42x42/FG?color=e55f3b" alt="avatar">
+                                            </figure>
+                                            <article class="media-body">
+                                                <header>
+                                                    <h4>Nome Utente <small>16 ore fa</small></h4>
+                                                </header>
+                                                <div class="text">
+                                                    <p>In publishing and graphic design, lorem ipsum is a placeholder In publishing and graphic design, lorem ipsum is a placeholder In publishing and graphic design, lorem ipsum is a placeholder</p>
+                                                </div>
+                                                <footer>
+                                                    <a href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                                                    <a href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
+                                                    <a href="#">Rispondi</a>
+                                                    <a href="#">Condividi</a>
+                                                </footer>
+                                            </article>
+                                        </li>
+
+                                        <li class="media">
+                                            <figure class="pull-left img-circle">
+                                                <img class="media-object" src="http://cambelt.co/42x42/AS?color=a0180d" alt="avatar">
+                                            </figure>
+                                            <article class="media-body">
+                                                <header>
+                                                    <h4>Nome Utente <small>16 ore fa</small></h4>
+                                                </header>
+                                                <div class="text">
+                                                    <p>In publishing and graphic design, lorem ipsum is a placeholder</p>
+                                                </div>
+                                                <footer>
+                                                    <a href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>
+                                                    <a href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
+                                                    <a href="#">Rispondi</a>
+                                                    <a href="#">Condividi</a>
+                                                </footer>
+                                            </article>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div><!-- /#comments -->
+
+                        </div><!-- /#content -->
+                        <aside id="sidebar" class="hidden"></aside><!-- /#sidebar -->
+
+                    </div>
+
+                </div><!-- /.panel-body -->
+            </div><!-- /.panel -->
+
+            <!-- Main footer -->
+            <footer id="footer">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-3">
+                        <h4>il progetto</h4>
+                        <ul class="nav nav-stacked">
+                            <li><a href="#">confronti</a></li>
+                            <li class="active"><a href="#">classifiche</a></li>
+                            <li><a href="#">blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <h4>cosa puoi fare</h4>
+                        <ul class="nav nav-stacked">
+                            <li><a href="#">confronti</a></li>
+                            <li><a href="#">classifiche</a></li>
+                            <li><a href="#">blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <h4>servizi premium</h4>
+                        <ul class="nav nav-stacked">
+                            <li><a href="#">confronti</a></li>
+                            <li><a href="#">classifiche</a></li>
+                            <li><a href="#">blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <h4>contatti</h4>
+                        <ul class="nav nav-stacked">
+                            <li><a href="#">confronti</a></li>
+                            <li><a href="#">classifiche</a></li>
+                            <li><a href="#">blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="no-border">
+
+                <h5>con il contributo di</h5>
+
+                <ul class="list-unstyled row partners">
+                    <li class="col-xs-6 col-sm-3">
+                        <img class="img-circle" src="http://cambelt.co/60x60/1?color=ffffff" alt="">
+                    </li>
+                    <li class="col-xs-6 col-sm-3">
+                        <img class="img-circle" src="http://cambelt.co/60x60/2?color=ffffff" alt="">
+                    </li>
+                    <li class="col-xs-6 col-sm-3">
+                        <img class="img-circle" src="http://cambelt.co/60x60/3?color=ffffff" alt="">
+                    </li>
+                    <li class="col-xs-6 col-sm-3">
+                        <img class="img-circle" src="http://cambelt.co/60x60/4?color=ffffff" alt="">
+                    </li>
+                </ul>
+            </footer>
+        </div> <!-- /.container -->
+
+        <!-- Modal window -->
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="lock">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>Aggiornamento dati...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="scripts/vendor/jquery/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="scripts/vendor/bootstrap/dist/js/bootstrap.js"></script>
+        <!-- Enscroll -->
+        <script src="scripts/vendor/enscroll/js/mylibs/enscroll.js"></script>
+        <!-- Raphael -->
+        <script src="scripts/vendor/raphael/raphael.js"></script>
+        <script src="scripts/vendor/g.raphael/g.raphael.js"></script>
+        <script src="scripts/vendor/g.raphael/g.pie.js"></script>
+        <!-- Custom scripts -->
+        <script src="scripts/main.js"></script>
+        <!-- Live.js for developement>
+        <script src="scripts/live.js"></script -->
+    </body>
+</html>
