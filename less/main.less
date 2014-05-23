@@ -1,7 +1,7 @@
 /**
  * Main style
- * @author mleone
- * @version 1.5.7
+ * @author mleone <manuel.leone@gmail.com>
+ * @version 1.5.8
  **/
 
 // variables
@@ -1394,8 +1394,8 @@ a:visited {
     }
 
     #side-menu {
-        position: absolute;
-        width: 100%;
+        position: relative;
+        //width: 100%;
     }
 
     .panel-default {
@@ -1875,8 +1875,15 @@ a:hover .sprite-mappa-big, a.active .sprite-mappa-big { background-position: -28
     }
 }
 
-@media (max-width: 320px) {
-    .navbar-main .navbar-brand {
-        padding: 10px 0;
+@media (max-width: 400px) {
+    .navbar-main .navbar-header form {
+        width: 100%;
+    }
+
+    #settings {
+        position: relative;
+        top: auto !important;
+        left: auto;
+        width: 100%;
     }
 }

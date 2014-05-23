@@ -1,7 +1,7 @@
 /**
  * Main scripts
- * @author mleone
- * @version 1.5.7
+ * @author mleone <manuel.leone@gmail.com>
+ * @version 1.5.8
  **/
 
 $(document).ready(function(){
@@ -22,7 +22,7 @@ $(document).ready(function(){
         options    = {
             'env': 'development', // Environment. Values: production, development
             'autoScroll': !mapPage, // Side controls automatic scrolling. Values: true, false
-            'offset': ( mapPage ? 180 : 100 ), // Top offset.
+            'offset': ( !mapPage ? 100 : 180 ), // Top offset in map page and other pages
             'collapsibleMenu': {
                 'closeOthers': true // On click collapse other items. Values: true, false
             },
@@ -304,7 +304,7 @@ $(document).ready(function(){
 
         $closer.on( 'click', function( e ){
             e.preventDefault();
-            $panel.css({ left: -1 * (delta + 20) });
+            $panel.css({ left: "-120%" });
             $controls.css({ left: -2 });
         });
 
@@ -379,6 +379,15 @@ $(document).ready(function(){
                 moveScroll( $sidemenu, 0 );
             }
         });
+
+        /*$window.on( 'resize', function() {
+            console.log($content.height(), $sidemenu.height());
+            if ( $content.height() <= $sidemenu.height() ) {
+                $sidemenu.css( 'position', 'relative');
+            } else {
+                $sidemenu.css( 'position', 'absolute');
+            }
+        });*/
 
         if ( options.autoScroll) {
             $window.on( 'scroll', function() {
@@ -640,7 +649,7 @@ $(document).ready(function(){
 
     // Dev
     if ( options.env === 'development' ) {
-        $( 'body' ).append( '<script src="scripts/live.js"></script>' );
+        $( 'body' ).append( '<script src="scripts/vendor/live.js"></script>' );
     }
 
 
