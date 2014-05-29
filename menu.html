@@ -483,122 +483,174 @@
                             </div><!-- /#comments -->
 
                         </div><!-- /#content -->
-                        <aside id="sidebar" class="hidden">
-                            <form>
-                                <div class="panel panel-default" id="side-menu">
+
+                        <div id="side-controls-wrapper">
+                            <div id="side-controls">
+                                <a href="#menu-selezione" role="button" class="slider-arrow show grouped" id="open-menu-selezione"><span class="icon sprite-open-menu-selezione"></span></a>
+                            </div>
+
+                            <div id="settings" class="closed alt">
+
+                                <div class="panel panel-default hidden" id="menu-selezione">
+                                    <div class="panel-heading">
+                                        <a href="#" role="button" href="#" class="pull-right close-menu"><span class="icon sprite-close-menu-selezione"></span></a>
+                                        <h3 class="panel-title">Seleziona</h3>
+                                    </div>
+
                                     <div class="panel-body">
-
-                                        <a role="button" href="#" class="active pull-right" id="hide-menu"><span class="icon sprite-toggle-menu"></span></a>
-                                        <h3 class="menu-title">
-                                            Seleziona
-                                        </h3>
-
-                                        <div class="dropdown">
+                                        <div class="dropdown submenu-change">
                                             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                                                 <span class="caret pull-right"></span>
                                                 INDICATORI
                                             </button>
                                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#submenu-indicatori">INDICATORI</a></li>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#submenu-entrate">ENTRATE</a></li>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#submenu-spese">SPESE</a></li>
                                             </ul>
                                         </div>
+                                    </div>
 
-                                        <div class="scrollbox">
-                                            <ul class="nav nav-stacked menu">
-                                                <li>
-                                                    <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
-                                                    <a href="#" class="panel-collapse collapse"><span class="icon sprite-autonomia-finanziaria"></span> AUTONOMIA FINANZIARIA</a>
+                                    <div class="scrollbox">
+                                        <ul class="nav nav-stacked menu" id="submenu-indicatori">
+                                            <li>
+                                                <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                <a href="#" class="panel-collapse collapse"><span class="icon sprite-autonomia-finanziaria"></span> AUTONOMIA FINANZIARIA</a>
 
-                                                    <ul class="nav nav-stacked hidden">
-                                                        <li>
-                                                            <a href="#" class="pin pull-right" data-toggle="tooltip" data-html="true" title="vai alla classifica di tutti i comuni per questo indicatore.<br><strong class='link'><span class='icon sprite-search-alt'></span> Lorem ipsum</strong>"><span class="icon sprite-info"></span></a>
-                                                            <a href="#">Velocità di riscossione delle entrate proprie</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
-                                                            <a href="#">Pressione tributaria per abitante</a>
+                                                <ul class="nav nav-stacked hidden">
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" data-html="true" title="vai alla classifica di tutti i comuni per questo indicatore.<br><strong class='link'><span class='icon sprite-search-alt'></span> Lorem ipsum</strong>"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Velocità di riscossione delle entrate proprie</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Pressione tributaria per abitante</a>
 
-                                                            <ul class="nav nav-stacked">
-                                                                <li>
-                                                                    <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
-                                                                    <a href="">Pressione tributaria per...</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
-                                                            <a href="#">Risultato d’amministrazione valutato al fair value</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
-                                                            <a href="#">Consistenza...</a>
-                                                        </li>
-                                                    </ul>
+                                                        <ul class="nav nav-stacked">
+                                                            <li>
+                                                                <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                                <a href="">Pressione tributaria per...</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Risultato d’amministrazione valutato al fair value</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Consistenza...</a>
+                                                    </li>
+                                                </ul>
 
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
-                                                    <a href="#" class="panel-collapse collapse"><span class="icon sprite-capacita-programmatoria"></span> CAPACITA PROGRAMMATORIA</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                <a href="#" class="panel-collapse collapse"><span class="icon sprite-capacita-programmatoria"></span> CAPACITA PROGRAMMATORIA</a>
 
-                                                    <ul class="nav nav-stacked hidden">
-                                                        <li>
-                                                            <a href="#" class="pin pull-right" data-toggle="tooltip" data-html="true" title="vai alla classifica di tutti i comuni per questo indicatore.<br><strong class='link'><span class='icon sprite-search-alt'></span> Lorem ipsum</strong>"><span class="icon sprite-info"></span></a>
-                                                            <a href="#">Velocità di riscossione delle entrate proprie</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
-                                                            <a href="#">Pressione tributaria per abitante</a>
+                                                <ul class="nav nav-stacked hidden">
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" data-html="true" title="vai alla classifica di tutti i comuni per questo indicatore.<br><strong class='link'><span class='icon sprite-search-alt'></span> Lorem ipsum</strong>"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Velocità di riscossione delle entrate proprie</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Pressione tributaria per abitante</a>
 
-                                                            <ul class="nav nav-stacked">
-                                                                <li>
-                                                                    <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
-                                                                    <a href="">Pressione tributaria per...</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
-                                                            <a href="#">Risultato d’amministrazione valutato al fair value</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
-                                                            <a href="#">Consistenza...</a>
-                                                        </li>
-                                                    </ul>
+                                                        <ul class="nav nav-stacked">
+                                                            <li>
+                                                                <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                                <a href="">Pressione tributaria per...</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Risultato d’amministrazione valutato al fair value</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Consistenza...</a>
+                                                    </li>
+                                                </ul>
 
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
-                                                    <a href="#" class="panel-collapse"><span class="icon sprite-peso-amministrazione"></span> PESO DELL’AMMINISTRAZIONE</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
-                                                    <a href="#" class="panel-collapse"><span class="icon sprite-propensione-sviluppo"></span> PROPENSIONE ALLO SVILUPPO</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
-                                                    <a href="#" class="panel-collapse"><span class="icon sprite-sostenibilita"></span> SOSTENIBILITA</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
-                                                    <a href="#" class="panel-collapse"><span class="icon sprite-indicatori"></span> INDICATORI DI CONTESTO</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                <a href="#" class="panel-collapse"><span class="icon sprite-peso-amministrazione"></span> PESO DELL’AMMINISTRAZIONE</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                <a href="#" class="panel-collapse"><span class="icon sprite-propensione-sviluppo"></span> PROPENSIONE ALLO SVILUPPO</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                <a href="#" class="panel-collapse"><span class="icon sprite-sostenibilita"></span> SOSTENIBILITA</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                <a href="#" class="panel-collapse"><span class="icon sprite-indicatori"></span> INDICATORI DI CONTESTO</a>
+                                            </li>
+                                        </ul>
+
+
+                                        <ul class="nav nav-stacked menu hidden" id="submenu-entrate">
+                                            <li>
+                                                <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                <a href="#" class="panel-collapse collapse"><span class="icon sprite-autonomia-finanziaria"></span> AUTONOMIA FINANZIARIA</a>
+
+                                                <ul class="nav nav-stacked hidden">
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" data-html="true" title="vai alla classifica di tutti i comuni per questo indicatore.<br><strong class='link'><span class='icon sprite-search-alt'></span> Lorem ipsum</strong>"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Velocità di riscossione delle entrate proprie</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Pressione tributaria per abitante</a>
+
+                                                        <ul class="nav nav-stacked">
+                                                            <li>
+                                                                <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                                <a href="">Pressione tributaria per...</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Risultato d’amministrazione valutato al fair value</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" title="lorem ipsum"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Consistenza...</a>
+                                                    </li>
+                                                </ul>
+
+                                            </li>
+                                        </ul>
+
+                                        <ul class="nav nav-stacked menu hidden" id="submenu-spese">
+                                            <li>
+                                                <a href="#" class="pin pull-right hidden" data-toggle="tooltip" title="presenti voci selezionate"><span class="icon sprite-alert"></span></a>
+                                                <a href="#" class="panel-collapse collapse"><span class="icon sprite-autonomia-finanziaria"></span> AUTONOMIA FINANZIARIA</a>
+
+                                                <ul class="nav nav-stacked hidden">
+                                                    <li>
+                                                        <a href="#" class="pin pull-right" data-toggle="tooltip" data-html="true" title="vai alla classifica di tutti i comuni per questo indicatore.<br><strong class='link'><span class='icon sprite-search-alt'></span> Lorem ipsum</strong>"><span class="icon sprite-info"></span></a>
+                                                        <a href="#">Velocità di riscossione delle entrate proprie</a>
+                                                    </li>
+                                                </ul>
+
+                                            </li>
+                                        </ul>
 
                                     </div>
                                 </div>
-                            </form>
-                        </aside><!-- /#sidebar -->
+
+
+                            </div><!-- /#settings -->
+                        </div><!-- /#side-controls-wrapper -->
 
                     </div>
-
-                    <div id="side-controls">
-                        <a href="#" role="button" class="slider-arrow show" id="push-menu"><span class="icon sprite-open-menu"></span></a>
-                    </div>
-
                 </div><!-- /.panel-body -->
             </div><!-- /.panel -->
 

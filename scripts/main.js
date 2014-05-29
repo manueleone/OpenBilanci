@@ -1,23 +1,24 @@
 /**
  * Main scripts
  * @author mleone <manuel.leone@gmail.com>
- * @version 1.5.8
+ * @version 1.5.9
  **/
 
 $(document).ready(function(){
 
     // Main vars
-    var $window   = $( window ),
-        $lock     = $( '#lock' ),
-        $main     = $( '#main-content'),
-        $sidebar  = $( '#sidebar' ),
-        $content  = $( '#content' ),
-        $results  = $( '#results' ),
-        $comments = $( '#comments' ),
-        $controls = $( '#side-controls' ),
-        $settings = $( '#settings' ),
-        $sidemenu = $( '#side-menu' ),
-        mapPage  = ( $( '#map-canvas' ).length ? true : false ),
+    var $window         = $( window ),
+        $lock           = $( '#lock' ),
+        $main           = $( '#main-content'),
+        $sidebar        = $( '#sidebar' ),
+        $content        = $( '#content' ),
+        $results        = $( '#results' ),
+        $comments       = $( '#comments' ),
+        $controls       = $( '#side-controls' ),
+        $settings       = $( '#settings' ),
+        $sidemenu       = $( '#side-menu' ),
+        mapPage         = ( $( '#map-canvas' ).length ? true : false ),
+        pageHasControls = ( $( '#side-controls-wrapper' ).length ? true : false ),
 
         options    = {
             'env': 'development', // Environment. Values: production, development
@@ -28,7 +29,8 @@ $(document).ready(function(){
             },
             'pushMenu': {
                 'scroll': true, // Push menu scrolling. Values: true, false
-                'scrollto': false // On click scroll page to menu position. Values: true, false
+                'scrollto': false, // On click scroll page to menu position. Values: true, false
+                'startOpened': false // Opened by default. Values: true, false
             }
         };
 
@@ -84,8 +86,6 @@ $(document).ready(function(){
             home.$body.stop().animate( { scrollTop : top }, home.animspeed, home.animeasing );
         }
     }
-
-
 
 
     // Function to get the Max value in Array
@@ -269,21 +269,10 @@ $(document).ready(function(){
                 .addClass( clss.content.on );
         });
 
-
-        $sidebar.find( 'ul.dropdown-menu li a' ).on( 'click', function( e ){
-            e.preventDefault();
-
-            var $this = $( this ),
-                $dropdown = $this.parents( '.dropdown' ),
-                $btn = $dropdown.find( 'button' );
-
-            $btn.html( '<span class="caret pull-right" />' + $this.text() );
-            $dropdown.removeClass('open');
-
-            $sidebar.find( 'ul.menu' ).addClass( 'hidden' );
-            $sidebar.find( $this.attr( 'href' ) ).removeClass( 'hidden' );
-
-        });
+        // Push menu opened by default
+        if ( options.pushMenu.startOpened ) {
+            $opener.trigger( 'click' );
+        }
 
         setupCollapsibleMenu( $sidebar );
     }
@@ -308,9 +297,9 @@ $(document).ready(function(){
             $controls.css({ left: -2 });
         });
 
-        // Check for map page
-        if ( mapPage ) {
-            $opener = $( '#open-menu-schede, #open-menu-indicatori, #open-menu-filtri' );
+        // Check for controls
+        if ( pageHasControls ) {
+            $opener = $( '#side-controls > a' );
             $closer = null;
 
             $opener.on( 'click', function( e ){
@@ -330,7 +319,7 @@ $(document).ready(function(){
                 });
             });
 
-            setupCollapsibleMenu( $( '#menu-indicatori' ) );
+            setupCollapsibleMenu( $panel );
         }
 
     }
@@ -360,6 +349,27 @@ $(document).ready(function(){
         }
     }
 
+
+    function changeSubMenu()
+    {
+        var $dropdown =  $( 'div.submenu-change' ),
+            $btn = $dropdown.find( 'button' );
+            $this = null;
+
+        $dropdown.find( 'li > a').on( 'click', function( e ){
+            e.preventDefault();
+
+            $this = $( this );
+
+            $btn.html( '<span class="caret pull-right" />' + $this.text() );
+            $dropdown.removeClass('open');
+
+            $dropdown.parent().parent().find( 'ul.menu' ).addClass( 'hidden' );
+            $dropdown.parent().parent().find( $this.attr( 'href' ) ).removeClass( 'hidden' );
+
+        });
+    }
+
     // Side controls
     function setupSideControls()
     {
@@ -380,14 +390,8 @@ $(document).ready(function(){
             }
         });
 
-        /*$window.on( 'resize', function() {
-            console.log($content.height(), $sidemenu.height());
-            if ( $content.height() <= $sidemenu.height() ) {
-                $sidemenu.css( 'position', 'relative');
-            } else {
-                $sidemenu.css( 'position', 'absolute');
-            }
-        });*/
+
+
 
         if ( options.autoScroll) {
             $window.on( 'scroll', function() {
@@ -401,6 +405,7 @@ $(document).ready(function(){
 
         setupPushMenu();
         setupSettingsMenu();
+        changeSubMenu();
     }
 
     // Tooltips
@@ -563,8 +568,6 @@ $(document).ready(function(){
                 });
             });
         }
-
-
     }
 
     // Add charts
@@ -608,7 +611,7 @@ $(document).ready(function(){
         });
     }
 
-
+    // Parallax background
     function parallax()
     {
         $('section[data-type="background"]').each(function(){
