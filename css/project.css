@@ -3,7 +3,7 @@
 /**
  * Main style
  * @author mleone <manuel.leone@gmail.com>
- * @version 1.5.9
+ * @version 1.6.0
  **/
 body {
   background-color: #5e6a77;
@@ -118,6 +118,9 @@ a:visited {
 .more-info:visited.close {
   border-color: #b9c6c4;
 }
+.tip {
+  z-index: 1;
+}
 .tooltip.top .tooltip-arrow {
   border-top-color: #2a3036;
 }
@@ -129,6 +132,10 @@ a:visited {
 }
 .tooltip-inner .link {
   color: #cc6633;
+}
+.popover .popover-title {
+  background-color: #cc6633;
+  color: #fff;
 }
 .video-modal iframe {
   display: block;
@@ -1000,9 +1007,6 @@ a:visited {
   background: none;
   display: block;
 }
-#sidebar .menu .tooltip {
-  z-index: 9999999;
-}
 #sidebar .menu a.pin {
   display: inline;
   padding: 8px 5px 0;
@@ -1328,9 +1332,6 @@ a:visited {
   line-height: 15px;
   background: none;
 }
-#side-controls-wrapper #settings #menu-indicatori .menu .tooltip {
-  z-index: 9999999;
-}
 #side-controls-wrapper #settings #menu-indicatori .menu a.pin {
   display: inline;
   padding: 8px 5px 0;
@@ -1361,49 +1362,56 @@ a:visited {
   margin: 0 5px 10px 5px;
   padding-left: 10px;
 }
-#side-controls-wrapper #settings #menu-selezione .menu {
-  border-top: 1px solid #2a3036;
-  margin-right: 0;
+#side-controls-wrapper #settings #menu-selezione .multi-level-menu {
+  margin-top: 20px;
 }
-#side-controls-wrapper #settings #menu-selezione .menu > li {
-  border-bottom: 1px solid #2a3036;
-  overflow: hidden;
-  font-size: 13px;
+#side-controls-wrapper #settings #menu-selezione .multi-level-menu .menu > li {
+  margin-bottom: 10px;
 }
-#side-controls-wrapper #settings #menu-selezione .menu > li input {
-  float: left;
-  margin-right: 10px;
+#side-controls-wrapper #settings #menu-selezione .multi-level-menu .menu ul li {
+  padding-left: 10px;
+  border-left: 1px solid #e0e0e0;
+  margin: 0 0 0 5px;
 }
-#side-controls-wrapper #settings #menu-selezione .menu > li .icon {
-  margin-right: 6px;
-  float: left;
-}
-#side-controls-wrapper #settings #menu-selezione .menu > li > a {
-  font-weight: normal;
-}
-#side-controls-wrapper #settings #menu-selezione .menu > li ul ul li {
-  padding-left: 20px;
-  line-height: 1.3em;
-}
-#side-controls-wrapper #settings #menu-selezione .menu li > a {
+#side-controls-wrapper #settings #menu-selezione .multi-level-menu .menu li a {
   color: #2a3036;
-  padding: 5px;
+  padding: 2px 0;
   line-height: 15px;
   background: none;
-}
-#side-controls-wrapper #settings #menu-selezione .menu .tooltip {
-  z-index: 9999999;
-}
-#side-controls-wrapper #settings #menu-selezione .menu a.pin {
   display: inline;
-  padding: 8px 5px 0;
-  margin: 0;
-  line-height: 8px;
-  z-index: 1;
 }
-#side-controls-wrapper #settings #menu-selezione .menu a.pin .icon {
-  margin: 0;
-  padding: 0;
+#side-controls-wrapper #settings #menu-selezione .multi-level-menu .menu li a > i {
+  color: #99a5b1;
+  margin-right: 4px;
+}
+#side-controls-wrapper #settings #menu-selezione .multi-level-menu .menu li a:hover {
+  text-decoration: underline;
+}
+#side-controls-wrapper #settings #menu-selezione .multi-level-menu .menu li a:hover > i.fa-plus-circle {
+  color: #2a3036;
+}
+#side-controls-wrapper #settings #menu-selezione .multi-level-menu .menu li a i.fa-question-circle {
+  margin-left: 4px;
+  margin-right: 0;
+  color: #2a3036;
+}
+#side-controls-wrapper #settings #menu-selezione .multi-level-menu .menu li a:hover > i.fa-question-circle {
+  color: #cc6633;
+}
+#side-controls-wrapper #settings #menu-selezione .multi-level-menu .menu li i.fa-angle-left {
+  color: #99a5b1;
+  margin-right: 5px;
+  margin-left: 4px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+}
+#side-controls-wrapper #settings #menu-selezione .multi-level-menu .menu li.active a i.fa-minus-circle {
+  color: #2a3036;
+}
+#side-controls-wrapper #settings #menu-selezione .multi-level-menu .menu li.active > a {
+  font-weight: 700;
 }
 #side-controls-wrapper #settings #menu-filtri {
   margin-top: 78px;
@@ -2010,7 +2018,7 @@ a.active .sprite-mappa-big {
 /**
  * Splash style
  * @author mleone
- * @version 1.5.9
+ * @version 1.6.0
  **/
 #splash .container-fluid {
   padding: 10px 0;
@@ -2102,7 +2110,7 @@ a.active .sprite-mappa-big {
 /**
  * Home style
  * @author mleone <manuel.leone@gmail.com>
- * @version 1.5.9
+ * @version 1.6.0
  **/
 #home .container-fluid {
   padding: 10px 0;
@@ -2441,8 +2449,12 @@ a.active .sprite-mappa-big {
   #settings {
     position: relative;
     top: auto !important;
-    left: auto;
+    left: auto !important;
     width: 100%;
+  }
+  #settings .panel > .panel-heading {
+    margin-left: 0 !important;
+    padding-left: 15px !important;
   }
 }
 .composition-widget-container {

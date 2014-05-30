@@ -1,7 +1,7 @@
 /**
  * Main style
  * @author mleone <manuel.leone@gmail.com>
- * @version 1.5.9
+ * @version 1.6.0
  **/
 
 // variables
@@ -131,6 +131,10 @@ a:visited {
     }
 }
 
+.tip {
+    z-index: 1;
+}
+
 .tooltip.top .tooltip-arrow {
     border-top-color: @textColor;
 }
@@ -144,6 +148,11 @@ a:visited {
     .link {
         color: @activeColor;
     }
+}
+
+.popover .popover-title {
+    background-color: @activeColor;
+    color: #fff;
 }
 
 .video-modal {
@@ -1232,10 +1241,6 @@ a:visited {
             display: block;
         }
 
-        .tooltip {
-            z-index: 9999999;
-        }
-
         a.pin {
             display: inline;
             padding: 8px 5px 0;
@@ -1587,10 +1592,6 @@ a:visited {
                     background: none;
                 }
 
-                .tooltip {
-                    z-index: 9999999;
-                }
-
                 a.pin {
                     display: inline;
                     padding: 8px 5px 0;
@@ -1633,57 +1634,74 @@ a:visited {
                 padding-left: 10px;
             }
 
-            .menu {
-                border-top: 1px solid @textColor;
-                margin-right: 0;
+            .multi-level-menu {
+                margin-top: 20px;
 
-                > li {
-                    border-bottom: 1px solid @textColor;
-                    overflow: hidden;
-                    font-size: 13px;
+                .menu {
 
-                    input {
-                        float: left;
-                        margin-right: 10px;
+                    > li {
+                        margin-bottom: 10px;
                     }
 
-                    .icon {
-                        margin-right: 6px;
-                        float: left;
+                    ul li {
+                        padding-left: 10px;
+                        border-left: 1px solid #e0e0e0;
+                        margin: 0 0 0 5px;
                     }
 
-                    > a {
-                        font-weight: normal;
-                    }
+                    li {
 
-                    ul ul li {
-                        padding-left: 20px;
-                        line-height: 1.3em;
-                    }
+                        a {
+                            color: @textColor;
+                            padding: 2px 0;
+                            line-height: 15px;
+                            background: none;
+                            display: inline;
 
-                }
 
-                li > a {
-                    color: @textColor;
-                    padding: 5px;
-                    line-height: 15px;
-                    background: none;
-                }
+                            > i {
+                                color: @altTextColor;
+                                margin-right: 4px;
+                            }
 
-                .tooltip {
-                    z-index: 9999999;
-                }
+                            &:hover {
+                                text-decoration: underline;
 
-                a.pin {
-                    display: inline;
-                    padding: 8px 5px 0;
-                    margin: 0;
-                    line-height: 8px;
-                    z-index: 1;
+                                & > i.fa-plus-circle {
+                                    color: @textColor;
+                                }
+                            }
 
-                    .icon {
-                        margin: 0;
-                        padding: 0;
+                            i.fa-question-circle {
+                                margin-left: 4px;
+                                margin-right: 0;
+                                color: @textColor;
+                            }
+
+                            &:hover > i.fa-question-circle {
+                                color: @activeColor;
+                            }
+                        }
+
+                        i.fa-angle-left {
+                            color: @altTextColor;
+                            margin-right: 5px;
+                            margin-left: 4px;
+                            .rotate(-45deg);
+                        }
+
+
+
+                        &.active a {
+
+                            i.fa-minus-circle {
+                                color: @textColor;
+                            }
+                        }
+
+                        &.active > a {
+                            font-weight: @heavy;
+                        }
                     }
                 }
             }
@@ -1978,7 +1996,13 @@ a:hover .sprite-mappa-big, a.active .sprite-mappa-big { background-position: -28
     #settings {
         position: relative;
         top: auto !important;
-        left: auto;
+        left: auto !important;
         width: 100%;
+
+        .panel > .panel-heading {
+             margin-left: 0 !important;
+             padding-left: 15px !important;
+        }
     }
+
 }

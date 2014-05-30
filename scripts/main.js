@@ -1,7 +1,7 @@
 /**
  * Main scripts
  * @author mleone <manuel.leone@gmail.com>
- * @version 1.5.9
+ * @version 1.6.0
  **/
 
 $(document).ready(function(){
@@ -25,7 +25,8 @@ $(document).ready(function(){
             'autoScroll': !mapPage, // Side controls automatic scrolling. Values: true, false
             'offset': ( !mapPage ? 100 : 180 ), // Top offset in map page and other pages
             'collapsibleMenu': {
-                'closeOthers': true // On click collapse other items. Values: true, false
+                'closeOthers': true, // On click collapse other items. Values: true, false
+                'startCollapsed': false // Collapsed by default. Values: true, false
             },
             'pushMenu': {
                 'scroll': true, // Push menu scrolling. Values: true, false
@@ -186,13 +187,18 @@ $(document).ready(function(){
     // Collapsible menu
     function setupCollapsibleMenu( $container )
     {
-        $container.find( '.panel-collapse' ).on( 'click', function(e){
+
+        var $togglers = $container.find( '.panel-collapse' ),
+            $toggler = null,
+            $submenu = null,
+            $pin = null,
+            selected = 0;
+
+        $togglers.on( 'click', function(e){
             e.preventDefault();
-            var $togglers = $container.find( '.panel-collapse' ),
-                $toggler = $( this ),
-                $submenu = $toggler.next( 'ul' ),
-                $pin = null,
-                selected = 0;
+            $toggler = $( this );
+            $submenu = $toggler.next( 'ul' );
+            selected = 0;
 
             $togglers.each(function( i, el ){
 
@@ -203,16 +209,61 @@ $(document).ready(function(){
                     }
                 } else {
                     $toggler.toggleClass( 'collapse' );
-                        $submenu.toggleClass( 'hidden' );
+                    $submenu.toggleClass( 'hidden' );
                 }
 
                 selected = $( el ).next( 'ul' ).find( 'input:checked' ).length;
-                $pin = $( el ).prev();
+                $pin = $( el ).prev( 'i.pin' );
 
                 if (selected > 0) {
                     $pin.removeClass( 'hidden' );
                 } else {
                     $pin.addClass( 'hidden' );
+                }
+            });
+        });
+    }
+
+    // Multilevel Collapsible menu
+    function setupMultiLevelCollapsibleMenu()
+    {
+        var $container = $( 'div.multi-level-menu' ),
+            $items     = $container.find( 'ul.nav li' ),
+            $item      = null,
+            $togglers  = $items.find( 'a.toggler' ),
+            $toggler   = null,
+            $submenu   = null;
+
+        // on init
+        if ( !options.collapsibleMenu.startCollapsed ) {
+            $items.each(function( i, el ){
+                $item = $( this );
+                if ( $item.hasClass( 'active' ) ) {
+                    $item.parents( 'ul.nav.hidden' ).removeClass( 'hidden' );
+                    $item.find( '> a i' ).removeClass( 'fa-plus-circle').addClass( 'fa-minus-circle' );
+                }
+            });
+        }
+
+        // on click
+        $togglers.on( 'click', function(e){
+            e.preventDefault();
+            $toggler = $( this );
+            $submenu = $toggler.nextAll( 'ul.nav' );
+
+            $togglers.each(function( i, el ){
+                if ( !$toggler.is($( el )) ) {
+                    if ( options.collapsibleMenu.closeOthers ) {
+                        $( el ).find('ul.nav').addClass( 'hidden' );
+                    }
+                } else {
+                    if ( !$submenu.hasClass( 'hidden' ) ) {
+                        $toggler.parent().find( 'ul.nav' ).addClass( 'hidden' );
+                        $toggler.parent().find( 'i' ).removeClass( 'fa-minus-circle').addClass( 'fa-plus-circle' );
+                    } else {
+                        $toggler.find( 'i' ).removeClass( 'fa-plus-circle').addClass( 'fa-minus-circle' );
+                        $submenu.removeClass( 'hidden' );
+                    }
                 }
             });
         });
@@ -305,7 +356,9 @@ $(document).ready(function(){
             $opener.on( 'click', function( e ){
                 e.preventDefault();
 
-                var $this = $( this ),
+                $opener.removeClass( 'invisible' );
+
+                var $this = $( this ).addClass( 'invisible' ),
                     $target = $( $this.attr( 'href' ) ),
                     $closer = $target.find( 'a.close-menu' );
 
@@ -315,11 +368,18 @@ $(document).ready(function(){
 
                 $closer.on( 'click', function( e ){
                     e.preventDefault();
+                    $this.removeClass( 'invisible' );
                     $target.addClass('hidden');
                 });
             });
 
             setupCollapsibleMenu( $panel );
+            setupMultiLevelCollapsibleMenu( $panel );
+        }
+
+        // Settings menu opened by default
+        if ( options.pushMenu.startOpened ) {
+            $opener.trigger( 'click' );
         }
 
     }
@@ -390,9 +450,6 @@ $(document).ready(function(){
             }
         });
 
-
-
-
         if ( options.autoScroll) {
             $window.on( 'scroll', function() {
                 moveScroll( $controls, options.offset );
@@ -411,7 +468,8 @@ $(document).ready(function(){
     // Tooltips
     function setupTooltips()
     {
-        $( '[data-toggle="tooltip"]' ).tooltip( {placement: 'right', container: 'body'} );
+        $( '[data-toggle="tooltip"]' ).tooltip({ placement: 'right', container: 'body' });
+        $( '[data-toggle="popover"]' ).popover({ placement: 'right', html: true });
     }
 
     // Donut chart
