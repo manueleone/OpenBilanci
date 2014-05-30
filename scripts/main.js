@@ -225,10 +225,9 @@ $(document).ready(function(){
     }
 
     // Multilevel Collapsible menu
-    function setupMultiLevelCollapsibleMenu()
+    function setupMultiLevelCollapsibleMenu( $container )
     {
-        var $container = $( 'div.multi-level-menu' ),
-            $items     = $container.find( 'ul.nav li' ),
+        var $items     = $container.find('div.multi-level-menu' ).find( 'ul.nav li' ),
             $item      = null,
             $togglers  = $items.find( 'a.toggler' ),
             $toggler   = null,
