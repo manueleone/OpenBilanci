@@ -253,15 +253,20 @@ $(document).ready(function(){
             $togglers.each(function( i, el ){
                 if ( !$toggler.is($( el )) ) {
                     if ( options.collapsibleMenu.closeOthers ) {
-                        $( el ).find('ul.nav').addClass( 'hidden' );
+                        $( el ).find( 'ul.nav' ).addClass( 'hidden' );
                     }
                 } else {
                     if ( !$submenu.hasClass( 'hidden' ) ) {
-                        $toggler.parent().find( 'ul.nav' ).addClass( 'hidden' );
-                        $toggler.parent().find( 'i' ).removeClass( 'fa-minus-circle').addClass( 'fa-plus-circle' );
+                        $toggler.parent( 'li' ).find( 'ul.nav' ).addClass( 'hidden' );
+                        $toggler.parent( 'li' ).find( 'i' ).removeClass( 'fa-minus-circle').addClass( 'fa-plus-circle' );
                     } else {
                         $toggler.find( 'i' ).removeClass( 'fa-plus-circle').addClass( 'fa-minus-circle' );
                         $submenu.removeClass( 'hidden' );
+
+                        if ( options.collapsibleMenu.closeOthers ) {
+                            $toggler.parent( 'li' ).siblings().find( 'ul.nav' ).addClass( 'hidden' );
+                            $toggler.parent( 'li' ).siblings().find( 'i' ).removeClass( 'fa-minus-circle').addClass( 'fa-plus-circle' );
+                        }
                     }
                 }
             });
